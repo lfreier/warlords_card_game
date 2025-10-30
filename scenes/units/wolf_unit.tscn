@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://c0jilhaj3cid5"]
+
+[ext_resource type="Script" uid="uid://uc77hwgo3hwq" path="res://scripts/units/wolf_unit.gd" id="1_um624"]
+[ext_resource type="Texture2D" uid="uid://n37ctvb73mhy" path="res://sprites/wolf1.png" id="2_l425c"]
+[ext_resource type="Resource" uid="uid://c85xtktd174su" path="res://scenes/units/unit_data/wolf_data.tres" id="2_yoy2a"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lf63s"]
+radius = 90.0
+
+[node name="WolfUnit" type="Area2D" node_paths=PackedStringArray("sprite")]
+scale = Vector2(0.95, 0.95)
+collision_layer = 24
+collision_mask = 48
+script = ExtResource("1_um624")
+data = ExtResource("2_yoy2a")
+sprite = NodePath("UnitSprite")
+
+[node name="UnitCollision" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_lf63s")
+
+[node name="UnitSprite" type="Sprite2D" parent="."]
+z_index = 5
+scale = Vector2(2, 2)
+texture = ExtResource("2_l425c")

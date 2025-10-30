@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://kt2hlqnvkkbb"]
+
+[ext_resource type="Script" uid="uid://detelie4xyv6c" path="res://scripts/card_effects/summon_vthrall.gd" id="1_33xdd"]
+[ext_resource type="Texture2D" uid="uid://cv5v6j3hblggl" path="res://sprites/summon_vthrall.png" id="2_q6sn6"]
+[ext_resource type="Resource" uid="uid://b1f88ifxlx5o1" path="res://scenes/units/spawn_data/vthrall_spawn.tres" id="3_qp0jq"]
+
+[node name="summon_vthrall" type="Node"]
+script = ExtResource("1_33xdd")
+id = "summon_vthrall"
+sprite = ExtResource("2_q6sn6")
+unit_spawn_data = ExtResource("3_qp0jq")

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6anytgwa283m"]
+
+[ext_resource type="Script" uid="uid://ccdfxf51c8akh" path="res://scripts/hand.gd" id="1_045vl"]
+[ext_resource type="PackedScene" uid="uid://cu5hi4dhbwwuo" path="res://scenes/card.tscn" id="2_cmdsa"]
+
+[node name="Hand" type="Node2D"]
+script = ExtResource("1_045vl")
+card_scene = ExtResource("2_cmdsa")
+metadata/handOrigin = Vector2(0, 0)
+metadata/card_gap = 200.0

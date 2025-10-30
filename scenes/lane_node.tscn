@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cxujtb4640ld8"]
+
+[ext_resource type="Texture2D" uid="uid://bddrwyi5uj5d1" path="res://sprites/lane_tile.png" id="2_o1udl"]
+
+[node name="LaneNode" type="Sprite2D"]
+rotation = 1.5707964
+scale = Vector2(2, 2)
+texture = ExtResource("2_o1udl")

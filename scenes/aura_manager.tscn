@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b4wp4bhuwad8c"]
+
+[ext_resource type="Script" uid="uid://csgema5gol38h" path="res://scripts/aura_manager.gd" id="1_bkm06"]
+
+[node name="AuraManager" type="Node"]
+script = ExtResource("1_bkm06")

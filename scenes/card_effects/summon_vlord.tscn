@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://db3xmoavek5k1"]
+
+[ext_resource type="Script" uid="uid://d4h62hwfqu0g8" path="res://scripts/card_effects/summon_vlord.gd" id="1_nxw88"]
+[ext_resource type="Texture2D" uid="uid://dksf6eg81at3f" path="res://sprites/summon_vlord.png" id="2_ed3ro"]
+[ext_resource type="Resource" uid="uid://jo0i48c8843w" path="res://scenes/units/spawn_data/vlord_spawn.tres" id="2_nf1kn"]
+
+[node name="summon_vlord" type="Node"]
+script = ExtResource("1_nxw88")
+id = "summon_vlord"
+blood_cost = 5
+sprite = ExtResource("2_ed3ro")
+target_type = 1
+unit_spawn_data = ExtResource("2_nf1kn")

@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://bh7v5e8xjq6ny"]
+
+[ext_resource type="PackedScene" uid="uid://c3kn7ul5x3fw4" path="res://scenes/units/unit.tscn" id="1_soduv"]
+[ext_resource type="Resource" uid="uid://devtkmvwret7d" path="res://scenes/units/unit_data/bat_data.tres" id="2_16kxt"]
+[ext_resource type="Texture2D" uid="uid://fsou7ensmtcb" path="res://sprites/vamp_bat_swarm.png" id="3_rqo3p"]
+
+[node name="BatUnit" instance=ExtResource("1_soduv")]
+data = ExtResource("2_16kxt")
+
+[node name="UnitSprite" parent="." index="1"]
+texture = ExtResource("3_rqo3p")

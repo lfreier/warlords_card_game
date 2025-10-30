@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="UnitSpawnData" load_steps=4 format=3 uid="uid://jo0i48c8843w"]
+
+[ext_resource type="Script" uid="uid://km4l8mb2paxu" path="res://scripts/unit_spawn_data.gd" id="1_fb30f"]
+[ext_resource type="PackedScene" uid="uid://r662bfdx3n7d" path="res://scenes/units/vlord_unit.tscn" id="1_goy36"]
+[ext_resource type="Resource" uid="uid://bjqukcl7ild4c" path="res://scenes/units/unit_data/vlord_data.tres" id="2_0alio"]
+
+[resource]
+script = ExtResource("1_fb30f")
+unit_data = ExtResource("2_0alio")
+prefab = ExtResource("1_goy36")
+metadata/_custom_type_script = "uid://km4l8mb2paxu"

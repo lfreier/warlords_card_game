@@ -1,0 +1,67 @@
+[gd_scene load_steps=13 format=3 uid="uid://dbt30in5gmt27"]
+
+[ext_resource type="Script" uid="uid://crcu2xhn4nd65" path="res://scripts/card_scene_manager.gd" id="1_m7dmi"]
+[ext_resource type="Script" uid="uid://b5ru75k7g4ctj" path="res://scripts/input_reader.gd" id="1_s1p2v"]
+[ext_resource type="PackedScene" uid="uid://bjrrudknm3i5d" path="res://scenes/player.tscn" id="2_obytv"]
+[ext_resource type="Script" uid="uid://bcfq2sm2aui38" path="res://scripts/draw_button.gd" id="4_2vw83"]
+[ext_resource type="PackedScene" uid="uid://b4wp4bhuwad8c" path="res://scenes/aura_manager.tscn" id="4_choun"]
+[ext_resource type="Script" uid="uid://c4xpbmnd0vk8x" path="res://scripts/basic_ai.gd" id="6_o6xl0"]
+[ext_resource type="PackedScene" uid="uid://b1e7ghvr5dwij" path="res://scenes/lane.tscn" id="6_tefeu"]
+[ext_resource type="PackedScene" uid="uid://c0jilhaj3cid5" path="res://scenes/units/wolf_unit.tscn" id="7_tipki"]
+[ext_resource type="PackedScene" uid="uid://cabrwouk1sqxv" path="res://scenes/units/vamp_unit.tscn" id="8_85g3d"]
+[ext_resource type="PackedScene" uid="uid://dayyuffrsvyam" path="res://scenes/unit_button.tscn" id="9_ya4ey"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tipki"]
+size = Vector2(20, 1400)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_85g3d"]
+size = Vector2(20, 1400)
+
+[node name="Main" type="Node2D" node_paths=PackedStringArray("lane_holder")]
+script = ExtResource("1_m7dmi")
+lane_count = 7
+lane_holder = NodePath("LaneHolder")
+lane_node_count = 13
+lane_height = 200
+lane_scene = ExtResource("6_tefeu")
+ub_start_pos = Vector2(-1800, -1000)
+ub_offset = 250.0
+unit_button_scene = ExtResource("9_ya4ey")
+aura_manager_scene = ExtResource("4_choun")
+
+[node name="InputReader" type="Camera2D" parent="."]
+zoom = Vector2(0.5, 0.5)
+script = ExtResource("1_s1p2v")
+
+[node name="Player" parent="." instance=ExtResource("2_obytv")]
+
+[node name="DrawButton" type="Button" parent="."]
+offset_left = 1500.0
+offset_top = -50.0
+offset_right = 1660.0
+offset_bottom = 50.0
+script = ExtResource("4_2vw83")
+
+[node name="LaneHolder" type="Node2D" parent="."]
+position = Vector2(0, -300)
+script = ExtResource("6_o6xl0")
+units = Array[PackedScene]([ExtResource("7_tipki"), ExtResource("8_85g3d")])
+spawn_timer = 3.0
+
+[node name="LeftBase" type="Area2D" parent="LaneHolder"]
+position = Vector2(-1350, 0)
+collision_layer = 32
+collision_mask = 0
+
+[node name="LeftBaseCollision" type="CollisionShape2D" parent="LaneHolder/LeftBase"]
+shape = SubResource("RectangleShape2D_tipki")
+
+[node name="RightBase" type="Area2D" parent="LaneHolder"]
+position = Vector2(1350, 0)
+collision_layer = 32
+collision_mask = 0
+
+[node name="RightBaseCollision" type="CollisionShape2D" parent="LaneHolder/RightBase"]
+shape = SubResource("RectangleShape2D_85g3d")
+
+[node name="TimerService" type="Node" parent="."]

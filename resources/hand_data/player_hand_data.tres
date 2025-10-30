@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="HandData" load_steps=2 format=3 uid="uid://ctmag37p5cn1g"]
+
+[ext_resource type="Script" uid="uid://by6rf24osa5ik" path="res://scripts/hand_data.gd" id="1_t1cn2"]
+
+[resource]
+script = ExtResource("1_t1cn2")
+starting_hand_size = 5
+max_hand_size = 8
+metadata/_custom_type_script = "uid://by6rf24osa5ik"

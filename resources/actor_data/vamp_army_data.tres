@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ActorData" load_steps=4 format=3 uid="uid://bt2rr3sxc86ls"]
+
+[ext_resource type="Script" uid="uid://km4l8mb2paxu" path="res://scripts/unit_spawn_data.gd" id="1_aqsgt"]
+[ext_resource type="Script" uid="uid://ckbu2mgmx8rl4" path="res://resources/actor_data/actor_data.gd" id="2_ctnfj"]
+[ext_resource type="Resource" uid="uid://ulwrkugk5bd5" path="res://scenes/units/spawn_data/bat_spawn.tres" id="2_qv3xy"]
+
+[resource]
+script = ExtResource("2_ctnfj")
+replenishing_units = Array[ExtResource("1_aqsgt")]([ExtResource("2_qv3xy")])
+metadata/_custom_type_script = "uid://ckbu2mgmx8rl4"

@@ -1,0 +1,68 @@
+[gd_scene load_steps=9 format=3 uid="uid://dayyuffrsvyam"]
+
+[ext_resource type="Texture2D" uid="uid://n37ctvb73mhy" path="res://sprites/wolf1.png" id="1_0wvml"]
+[ext_resource type="Script" uid="uid://otyttewf7jvl" path="res://scripts/unit_spawn.gd" id="2_seikq"]
+[ext_resource type="PackedScene" uid="uid://do1t361am0c2t" path="res://scenes/target_marker.tscn" id="3_seikq"]
+[ext_resource type="Texture2D" uid="uid://dk0k75w3qio2c" path="res://sprites/key_bg.png" id="4_mgfc2"]
+
+[sub_resource type="SystemFont" id="SystemFont_seikq"]
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_mgfc2"]
+line_spacing = 0.0
+font = SubResource("SystemFont_seikq")
+font_size = 72
+outline_size = 24
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_mgfc2"]
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_x77d1"]
+font = SubResource("SystemFont_mgfc2")
+font_size = 36
+font_color = Color(17.607998, 17.607998, 17.607998, 1)
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[node name="UnitButton" type="Button" node_paths=PackedStringArray("unit_count_label", "key_num_label")]
+offset_left = -1800.0
+offset_top = -1000.0
+offset_right = -1600.0
+offset_bottom = -800.0
+icon = ExtResource("1_0wvml")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("2_seikq")
+target_marker_scene = ExtResource("3_seikq")
+target_layer = 4
+unit_count_label = NodePath("UnitCount")
+key_num_label = NodePath("KeySprite/KeyNum")
+
+[node name="UnitCount" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.795
+anchor_right = 1.0
+anchor_bottom = 0.24200001
+offset_left = -9.0
+offset_top = -12.0
+offset_right = -9.0
+offset_bottom = 38.6
+text = "0"
+label_settings = SubResource("LabelSettings_mgfc2")
+horizontal_alignment = 1
+
+[node name="KeySprite" type="Sprite2D" parent="."]
+position = Vector2(100, 200)
+texture = ExtResource("4_mgfc2")
+
+[node name="KeyNum" type="Label" parent="KeySprite"]
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+text = "1"
+label_settings = SubResource("LabelSettings_x77d1")
+horizontal_alignment = 1
+vertical_alignment = 1

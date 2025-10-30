@@ -1,0 +1,16 @@
+[gd_scene load_steps=6 format=3 uid="uid://b5bnemwid2bec"]
+
+[ext_resource type="Script" uid="uid://tuip1mnaujhr" path="res://scripts/global_data.gd" id="1_gwtl6"]
+[ext_resource type="PackedScene" uid="uid://q54nvkdl1nk5" path="res://scenes/card_effects/summon_wolf.tscn" id="2_6hutw"]
+[ext_resource type="PackedScene" uid="uid://dtqxw5v5lkesw" path="res://scenes/card_effects/summon_vamp.tscn" id="3_akgt1"]
+[ext_resource type="PackedScene" uid="uid://d7co42qvndgi" path="res://scenes/card_effects/summon_dog.tscn" id="4_6hutw"]
+[ext_resource type="PackedScene" uid="uid://db3xmoavek5k1" path="res://scenes/card_effects/summon_vlord.tscn" id="5_akgt1"]
+
+[node name="global_data" type="Node"]
+script = ExtResource("1_gwtl6")
+card_db_scenes = Dictionary[String, PackedScene]({
+"summon_dog": ExtResource("4_6hutw"),
+"summon_vamp": ExtResource("3_akgt1"),
+"summon_vlord": ExtResource("5_akgt1"),
+"summon_wolf": ExtResource("2_6hutw")
+})

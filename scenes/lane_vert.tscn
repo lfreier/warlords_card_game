@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://b8nqr0iup67qp"]
+
+[ext_resource type="Script" uid="uid://b4jnfkymox4nq" path="res://scripts/lane.gd" id="1_jnm6l"]
+[ext_resource type="PackedScene" uid="uid://cxujtb4640ld8" path="res://scenes/lane_node.tscn" id="2_umwjb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i20lb"]
+resource_local_to_scene = true
+size = Vector2(10, 200)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6c0se"]
+size = Vector2(160, 200)
+
+[node name="Lane" type="StaticBody2D" node_paths=PackedStringArray("collider_left", "collider_right", "play_area")]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_jnm6l")
+edge_length = 200
+lane_node_scene = ExtResource("2_umwjb")
+edge_width = 200
+edge_offset = 95
+collider_left = NodePath("LaneCollisionLeft")
+collider_right = NodePath("LaneCollisionRight")
+play_area = NodePath("PlayAreaBody/PlayArea")
+
+[node name="LaneCollisionLeft" type="CollisionShape2D" parent="."]
+position = Vector2(-95, 0)
+shape = SubResource("RectangleShape2D_i20lb")
+
+[node name="LaneCollisionRight" type="CollisionShape2D" parent="."]
+position = Vector2(95, 0)
+shape = SubResource("RectangleShape2D_i20lb")
+
+[node name="PlayAreaBody" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="PlayArea" type="CollisionShape2D" parent="PlayAreaBody"]
+shape = SubResource("RectangleShape2D_6c0se")

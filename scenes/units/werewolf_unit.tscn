@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://ca4r04o0n4wel"]
+
+[ext_resource type="PackedScene" uid="uid://c3kn7ul5x3fw4" path="res://scenes/units/unit.tscn" id="1_yjlws"]
+[ext_resource type="Texture2D" uid="uid://dy7b8848k2n8j" path="res://sprites/wolf2.png" id="2_cco3q"]
+[ext_resource type="Resource" uid="uid://1hi1bpwrjhvd" path="res://scenes/units/unit_data/werewolf_data.tres" id="2_gtsdx"]
+
+[node name="WerewolfUnit" instance=ExtResource("1_yjlws")]
+data = ExtResource("2_gtsdx")
+
+[node name="UnitSprite" parent="." index="1"]
+texture = ExtResource("2_cco3q")
