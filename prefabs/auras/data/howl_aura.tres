@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="AuraData" load_steps=3 format=3 uid="uid://bc8px7cqkrts"]
+
+[ext_resource type="Script" uid="uid://b0ge3x30pm1pw" path="res://prefabs/auras/data/aura_data.gd" id="1_4m4r0"]
+[ext_resource type="PackedScene" uid="uid://sygwwbh3jkoj" path="res://prefabs/auras/scenes/howl_aura.tscn" id="1_ixgtw"]
+
+[resource]
+script = ExtResource("1_4m4r0")
+prefab = ExtResource("1_ixgtw")
+stat_changes = Array[int]([1])
+stat_changes_amount = Array[float]([0.2])
+length_in_seconds = -1.0
+length_in_ticks = -1
+metadata/_custom_type_script = "uid://b0ge3x30pm1pw"

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c2r1lh5ih36y0"]
+
+[ext_resource type="Script" uid="uid://dohe7xfhqs7hg" path="res://prefabs/auras/scripts/hunger_aura.gd" id="1_tnt08"]
+
+[node name="HungerAura" type="Node2D"]
+script = ExtResource("1_tnt08")

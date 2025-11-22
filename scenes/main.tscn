@@ -1,67 +1,116 @@
-[gd_scene load_steps=13 format=3 uid="uid://dbt30in5gmt27"]
+[gd_scene load_steps=23 format=3 uid="uid://dbt30in5gmt27"]
 
 [ext_resource type="Script" uid="uid://crcu2xhn4nd65" path="res://scripts/card_scene_manager.gd" id="1_m7dmi"]
 [ext_resource type="Script" uid="uid://b5ru75k7g4ctj" path="res://scripts/input_reader.gd" id="1_s1p2v"]
 [ext_resource type="PackedScene" uid="uid://bjrrudknm3i5d" path="res://scenes/player.tscn" id="2_obytv"]
 [ext_resource type="Script" uid="uid://bcfq2sm2aui38" path="res://scripts/draw_button.gd" id="4_2vw83"]
 [ext_resource type="PackedScene" uid="uid://b4wp4bhuwad8c" path="res://scenes/aura_manager.tscn" id="4_choun"]
+[ext_resource type="PackedScene" uid="uid://cwx4dbxvwu4vk" path="res://scenes/base_placement.tscn" id="5_jbj1t"]
+[ext_resource type="Texture2D" uid="uid://c15oshwqdkjhc" path="res://sprites/moon_icon.png" id="6_jscy8"]
 [ext_resource type="Script" uid="uid://c4xpbmnd0vk8x" path="res://scripts/basic_ai.gd" id="6_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://b1e7ghvr5dwij" path="res://scenes/lane.tscn" id="6_tefeu"]
-[ext_resource type="PackedScene" uid="uid://c0jilhaj3cid5" path="res://scenes/units/wolf_unit.tscn" id="7_tipki"]
-[ext_resource type="PackedScene" uid="uid://cabrwouk1sqxv" path="res://scenes/units/vamp_unit.tscn" id="8_85g3d"]
-[ext_resource type="PackedScene" uid="uid://dayyuffrsvyam" path="res://scenes/unit_button.tscn" id="9_ya4ey"]
+[ext_resource type="PackedScene" uid="uid://mtwwybu81vay" path="res://prefabs/bases/vamp_racks_base.tscn" id="7_jbj1t"]
+[ext_resource type="PackedScene" uid="uid://7mh2f3n60553" path="res://prefabs/bases/vamp_coffin_base.tscn" id="8_0ld40"]
+[ext_resource type="PackedScene" uid="uid://cabrwouk1sqxv" path="res://prefabs/units/scenes/vamp_unit.tscn" id="8_85g3d"]
+[ext_resource type="PackedScene" uid="uid://dnpgtbqtaslql" path="res://prefabs/bases/wolf_shack_base.tscn" id="9_gqmmt"]
+[ext_resource type="PackedScene" uid="uid://c5hj5rsexayuo" path="res://scenes/hud_counter.tscn" id="11_ya4ey"]
+[ext_resource type="PackedScene" uid="uid://dayyuffrsvyam" path="res://scenes/unit_button.tscn" id="13_jscy8"]
+[ext_resource type="PackedScene" uid="uid://cs4qy4mjvh87j" path="res://prefabs/units/scenes/v_thrall_unit.tscn" id="13_muem4"]
+[ext_resource type="PackedScene" uid="uid://doyey6orktm28" path="res://prefabs/bases/vamp_tomb_base.tscn" id="13_trceg"]
+[ext_resource type="Texture2D" uid="uid://raujddfpwqs" path="res://sprites/unit_button_bg.png" id="14_jkv2x"]
+[ext_resource type="PackedScene" uid="uid://csayofinu1iul" path="res://prefabs/bases/home_base.tscn" id="14_muem4"]
+[ext_resource type="Texture2D" uid="uid://chm3cg2yb3302" path="res://sprites/unit_button_fill.png" id="15_jbj1t"]
+[ext_resource type="PackedScene" uid="uid://c33klu0sosmb8" path="res://scenes/hud_fill_counter.tscn" id="16_dp3eg"]
+[ext_resource type="Texture2D" uid="uid://b4fgtu3nyb53q" path="res://sprites/sun_icon.png" id="20_yc10j"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tipki"]
-size = Vector2(20, 1400)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_85g3d"]
-size = Vector2(20, 1400)
-
-[node name="Main" type="Node2D" node_paths=PackedStringArray("lane_holder")]
+[node name="Main" type="Node2D" node_paths=PackedStringArray("lane_holder", "day_progress_bar")]
 script = ExtResource("1_m7dmi")
 lane_count = 7
-lane_holder = NodePath("LaneHolder")
+lane_holder = NodePath("LaneContainer/LaneHolder")
 lane_node_count = 13
 lane_height = 200
 lane_scene = ExtResource("6_tefeu")
-ub_start_pos = Vector2(-1800, -1000)
-ub_offset = 250.0
-unit_button_scene = ExtResource("9_ya4ey")
 aura_manager_scene = ExtResource("4_choun")
+day_progress_bar = NodePath("DayTimer")
+time_of_day_icons = Array[Texture2D]([ExtResource("20_yc10j"), ExtResource("6_jscy8")])
+day_length = 10.0
+night_length = 5.0
+base_placement_scene = ExtResource("5_jbj1t")
+enemy_bases = Array[PackedScene]([ExtResource("8_0ld40"), ExtResource("13_trceg"), ExtResource("7_jbj1t")])
+player_shack_prefab = ExtResource("9_gqmmt")
 
 [node name="InputReader" type="Camera2D" parent="."]
 zoom = Vector2(0.5, 0.5)
 script = ExtResource("1_s1p2v")
 
 [node name="Player" parent="." instance=ExtResource("2_obytv")]
+card_list = Array[String](["give_buff", "summon_wolfman", "mih", "howl", "place_wolf_racks", "wolf_charge", "moon_draw"])
+ub_start_pos = Vector2(-1900, -1060)
+ub_offset = 220.0
+unit_button_scene = ExtResource("13_jscy8")
 
 [node name="DrawButton" type="Button" parent="."]
-offset_left = 1500.0
-offset_top = -50.0
-offset_right = 1660.0
-offset_bottom = 50.0
+offset_left = 1650.0
+offset_top = 600.0
+offset_right = 1810.0
+offset_bottom = 700.0
 script = ExtResource("4_2vw83")
 
-[node name="LaneHolder" type="Node2D" parent="."]
-position = Vector2(0, -300)
+[node name="LaneContainer" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+grow_horizontal = 2
+
+[node name="LaneHolder" type="Control" parent="LaneContainer"]
+layout_mode = 1
+anchor_right = 0.46
+anchor_bottom = 0.32
+offset_top = -300.0
+offset_bottom = -300.0
 script = ExtResource("6_o6xl0")
-units = Array[PackedScene]([ExtResource("7_tipki"), ExtResource("8_85g3d")])
+units = Array[PackedScene]([ExtResource("8_85g3d"), ExtResource("13_muem4")])
 spawn_timer = 3.0
 
-[node name="LeftBase" type="Area2D" parent="LaneHolder"]
-position = Vector2(-1350, 0)
-collision_layer = 32
-collision_mask = 0
+[node name="HomeBase" parent="LaneContainer/LaneHolder" instance=ExtResource("14_muem4")]
+position = Vector2(-1760, 0)
 
-[node name="LeftBaseCollision" type="CollisionShape2D" parent="LaneHolder/LeftBase"]
-shape = SubResource("RectangleShape2D_tipki")
-
-[node name="RightBase" type="Area2D" parent="LaneHolder"]
-position = Vector2(1350, 0)
-collision_layer = 32
-collision_mask = 0
-
-[node name="RightBaseCollision" type="CollisionShape2D" parent="LaneHolder/RightBase"]
-shape = SubResource("RectangleShape2D_85g3d")
+[node name="HomeBase2" parent="LaneContainer/LaneHolder" instance=ExtResource("14_muem4")]
+position = Vector2(1760, 0)
 
 [node name="TimerService" type="Node" parent="."]
+
+[node name="HudCounter" parent="." instance=ExtResource("11_ya4ey")]
+offset_left = -1800.0
+offset_top = 550.0
+offset_right = -1800.0
+offset_bottom = 550.0
+text_color = Color(0.4425015, 7.5805934e-07, 1.4439226e-07, 1)
+resource_type = 2
+
+[node name="HudCounter2" parent="." instance=ExtResource("11_ya4ey")]
+offset_left = -1800.0
+offset_top = 750.0
+offset_right = -1800.0
+offset_bottom = 750.0
+text_color = Color(0.3706263, 0.2443381, 0.07334799, 1)
+resource_type = 4
+
+[node name="HudFillCounter" parent="." instance=ExtResource("16_dp3eg")]
+offset_left = -1800.0
+offset_top = 550.0
+offset_right = -1800.0
+offset_bottom = 550.0
+resource_type = 3
+fill_max = 3
+
+[node name="DayTimer" type="TextureProgressBar" parent="."]
+offset_left = -50.0
+offset_top = -1080.0
+offset_right = 50.0
+offset_bottom = -980.0
+fill_mode = 4
+texture_under = ExtResource("14_jkv2x")
+texture_over = ExtResource("20_yc10j")
+texture_progress = ExtResource("15_jbj1t")

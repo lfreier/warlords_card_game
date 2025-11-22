@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://oo2y8y7wgwl7"]
+
+[ext_resource type="PackedScene" uid="uid://c3kn7ul5x3fw4" path="res://prefabs/units/scenes/unit.tscn" id="1_0lw1j"]
+[ext_resource type="Resource" uid="uid://c85xtktd174su" path="res://prefabs/units/unit_data/wolf_data.tres" id="2_yoy2a"]
+
+[node name="WolfUnit" instance=ExtResource("1_0lw1j")]
+unit_data = ExtResource("2_yoy2a")

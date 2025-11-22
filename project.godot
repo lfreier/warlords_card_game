@@ -18,7 +18,8 @@ config/icon="res://icon.svg"
 [autoload]
 
 signals="*res://scenes/signals.tscn"
-global_data="*res://scenes/global_data.tscn"
+globals="*res://scenes/global_data.tscn"
+AuraManager="*res://scripts/aura_manager.gd"
 
 [display]
 
@@ -62,6 +63,7 @@ battle_unit4={
 2d_physics/layer_4="LaneCollision"
 2d_physics/layer_5="UnitCollision"
 2d_physics/layer_6="BaseCollision"
+2d_physics/layer_7="HandCollision"
 2d_physics/size/viewport_height=1080
 2d_physics/size/viewport_width=1920
 

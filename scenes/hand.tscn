@@ -1,10 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://c6anytgwa283m"]
+[gd_scene load_steps=4 format=3 uid="uid://c6anytgwa283m"]
 
 [ext_resource type="Script" uid="uid://ccdfxf51c8akh" path="res://scripts/hand.gd" id="1_045vl"]
 [ext_resource type="PackedScene" uid="uid://cu5hi4dhbwwuo" path="res://scenes/card.tscn" id="2_cmdsa"]
 
-[node name="Hand" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cmdsa"]
+size = Vector2(2750, 500)
+
+[node name="Hand" type="Area2D" node_paths=PackedStringArray("card_holder")]
+collision_layer = 64
+collision_mask = 0
 script = ExtResource("1_045vl")
 card_scene = ExtResource("2_cmdsa")
+card_holder = NodePath("CardHolder")
 metadata/handOrigin = Vector2(0, 0)
 metadata/card_gap = 200.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_cmdsa")
+
+[node name="CardHolder" type="Node2D" parent="."]

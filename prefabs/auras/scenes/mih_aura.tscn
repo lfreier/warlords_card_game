@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxo2phn7adlka"]
+
+[ext_resource type="Script" uid="uid://tgojd3kk8rsr" path="res://prefabs/auras/scripts/mih_aura.gd" id="1_pbcwg"]
+
+[node name="MadeInHeaven" type="Node2D"]
+script = ExtResource("1_pbcwg")

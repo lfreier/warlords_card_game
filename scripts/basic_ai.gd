@@ -1,4 +1,4 @@
-extends Node
+extends Control
 
 @export var units: Array[PackedScene]
 

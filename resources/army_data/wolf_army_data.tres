@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ArmyData" load_steps=5 format=3 uid="uid://b3uqgoe7wclys"]
+
+[ext_resource type="Script" uid="uid://km4l8mb2paxu" path="res://prefabs/units/spawn_data/unit_spawn_data.gd" id="1_13dql"]
+[ext_resource type="Resource" uid="uid://bcfuebhywq5gi" path="res://prefabs/units/spawn_data/dog_spawn.tres" id="2_yxr7e"]
+[ext_resource type="Script" uid="uid://ckbu2mgmx8rl4" path="res://resources/army_data/army_data.gd" id="3_ae433"]
+[ext_resource type="Resource" uid="uid://bt0uhkvgxlmq6" path="res://prefabs/units/spawn_data/wolf_spawn.tres" id="3_yxr7e"]
+
+[resource]
+script = ExtResource("3_ae433")
+replenishing_units = Array[ExtResource("1_13dql")]([ExtResource("2_yxr7e"), ExtResource("3_yxr7e")])
+metadata/_custom_type_script = "uid://ckbu2mgmx8rl4"

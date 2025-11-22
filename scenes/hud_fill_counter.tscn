@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://c33klu0sosmb8"]
+
+[ext_resource type="PackedScene" uid="uid://c5hj5rsexayuo" path="res://scenes/hud_counter.tscn" id="1_c2icw"]
+[ext_resource type="Texture2D" uid="uid://b3pwaoc3qg27" path="res://sprites/blood_fill.png" id="2_8of6b"]
+
+[node name="HudFillCounter" node_paths=PackedStringArray("fill_bar") instance=ExtResource("1_c2icw")]
+text_color = Color(0.45490196, 0, 0, 0.627451)
+fill_bar = NodePath("FillBar")
+
+[node name="CounterLabel" parent="." index="0"]
+visible = false
+
+[node name="FillBar" type="TextureProgressBar" parent="." index="1"]
+layout_mode = 0
+offset_top = 47.5
+offset_right = 100.0
+offset_bottom = 187.5
+fill_mode = 3
+texture_progress = ExtResource("2_8of6b")

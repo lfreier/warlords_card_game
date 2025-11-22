@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://cwx4dbxvwu4vk"]
+
+[ext_resource type="Script" uid="uid://chbmkaq4jwhc1" path="res://scripts/base_placement.gd" id="1_wjp20"]
+[ext_resource type="PackedScene" uid="uid://0f6xfdrrtekh" path="res://scenes/base_place_button.tscn" id="2_0ns0r"]
+[ext_resource type="PackedScene" uid="uid://cob5cv0noslwl" path="res://prefabs/bases/wolf_hut_base.tscn" id="2_uyy41"]
+[ext_resource type="PackedScene" uid="uid://c1tjr2g3fj0pu" path="res://prefabs/bases/wolf_racks_base.tscn" id="3_s3psn"]
+
+[node name="BasePlacement" type="Control" node_paths=PackedStringArray("done_button")]
+layout_direction = 2
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = 460.0
+offset_right = -160.0
+offset_bottom = 560.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+script = ExtResource("1_wjp20")
+base_prefab_list = Array[PackedScene]([ExtResource("2_uyy41"), ExtResource("3_s3psn")])
+base_placement_button = ExtResource("2_0ns0r")
+done_button = NodePath("DoneButton")
+
+[node name="DoneButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 350.0
+offset_top = 150.0
+offset_right = 450.0
+offset_bottom = 200.0
+text = "DONE"

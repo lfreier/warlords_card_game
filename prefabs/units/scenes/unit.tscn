@@ -1,0 +1,67 @@
+[gd_scene load_steps=6 format=3 uid="uid://c3kn7ul5x3fw4"]
+
+[ext_resource type="Script" uid="uid://dq4laa7qd4ooy" path="res://prefabs/units/scripts/unit.gd" id="1_pnrs7"]
+[ext_resource type="Texture2D" uid="uid://n37ctvb73mhy" path="res://sprites/units/wolf1.png" id="2_hvvqh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lf63s"]
+radius = 100.0
+
+[sub_resource type="SystemFont" id="SystemFont_6e3tn"]
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_cx6aj"]
+font = SubResource("SystemFont_6e3tn")
+font_size = 20
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Unit" type="Area2D" node_paths=PackedStringArray("sprite")]
+scale = Vector2(0.95, 0.95)
+collision_layer = 24
+collision_mask = 48
+script = ExtResource("1_pnrs7")
+sprite = NodePath("UnitSprite")
+
+[node name="UnitCollision" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_lf63s")
+
+[node name="UnitSprite" type="Sprite2D" parent="."]
+z_index = 5
+scale = Vector2(2, 2)
+texture = ExtResource("2_hvvqh")
+
+[node name="hp_text" type="Label" parent="."]
+z_index = 10
+offset_left = -18.947
+offset_top = -30.0
+offset_right = 29.053003
+offset_bottom = 20.000004
+text = "hp: 0"
+label_settings = SubResource("LabelSettings_cx6aj")
+
+[node name="move_text" type="Label" parent="."]
+z_index = 10
+offset_left = -40.00037
+offset_top = -9.473684
+offset_right = 50.99963
+offset_bottom = 40.526314
+text = "move: 0"
+label_settings = SubResource("LabelSettings_cx6aj")
+
+[node name="damage_text" type="Label" parent="."]
+z_index = 10
+offset_left = -49.473686
+offset_top = 10.526316
+offset_right = 70.52631
+offset_bottom = 60.526314
+text = "damage: 0"
+label_settings = SubResource("LabelSettings_cx6aj")
+
+[node name="atk_speed_text" type="Label" parent="."]
+z_index = 10
+offset_left = -45.263157
+offset_top = 31.578949
+offset_right = 51.736843
+offset_bottom = 81.57895
+text = "atk_spd: 0"
+label_settings = SubResource("LabelSettings_cx6aj")

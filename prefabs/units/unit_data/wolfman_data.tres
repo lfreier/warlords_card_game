@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="UnitData" load_steps=3 format=3 uid="uid://dy87rfge3g2ey"]
+
+[ext_resource type="Script" uid="uid://t32n24n8nlk6" path="res://prefabs/units/unit_data/unit_data.gd" id="1_y6xin"]
+[ext_resource type="Texture2D" uid="uid://bsfqkju7afvuo" path="res://sprites/units/wolfman_1.png" id="2_y6u6j"]
+
+[resource]
+script = ExtResource("1_y6xin")
+id = "wolfman"
+speed = 10.0
+hp = 8.0
+attack_damage = 1.0
+attack_speed = 1.0
+attack_startup_speed = 1.0
+texture = ExtResource("2_y6u6j")
+replenish_time = 10.0
+metadata/_custom_type_script = "uid://t32n24n8nlk6"

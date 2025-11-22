@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="AuraData" load_steps=3 format=3 uid="uid://bkyr51xxjmqlq"]
+
+[ext_resource type="PackedScene" uid="uid://c2r1lh5ih36y0" path="res://prefabs/auras/scenes/hunger_aura.tscn" id="1_f151u"]
+[ext_resource type="Script" uid="uid://b0ge3x30pm1pw" path="res://prefabs/auras/data/aura_data.gd" id="1_jegq6"]
+
+[resource]
+script = ExtResource("1_jegq6")
+prefab = ExtResource("1_f151u")
+metadata/_custom_type_script = "uid://b0ge3x30pm1pw"

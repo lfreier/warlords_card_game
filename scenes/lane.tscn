@@ -8,7 +8,7 @@ resource_local_to_scene = true
 size = Vector2(200, 10)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6c0se"]
-size = Vector2(200, 180)
+size = Vector2(200, 200)
 
 [node name="Lane" type="StaticBody2D" node_paths=PackedStringArray("collider_left", "collider_right", "play_area")]
 collision_layer = 8

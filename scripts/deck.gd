@@ -12,10 +12,10 @@ func get_all_unit_spawn_data() -> Array[UnitSpawnData]:
 	var all_unit_data: Array[UnitSpawnData]
 	var unique_units: Array[String]
 	for i in range(card_list.size()):
-		var curr: PackedScene = global_data.card_db_scenes.get(card_list[i])
+		var curr: PackedScene = globals.card_db_scenes.get(card_list[i])
 		if (curr != null && !unique_units.has(card_list[i])):
 			var card: CardEffect = curr.instantiate()
-			if (card != null):
+			if (card != null && card.unit_spawn_data != null):
 				all_unit_data.append(card.unit_spawn_data)
 				unique_units.append(card_list[i])
 	return all_unit_data
@@ -23,7 +23,7 @@ func get_all_unit_spawn_data() -> Array[UnitSpawnData]:
 func get_next_card() -> PackedScene:
 	if (card_list.size() <= 0):
 		return null
-	var new_scene = global_data.card_db_scenes.get(card_list[0])
+	var new_scene = globals.card_db_scenes.get(card_list[0])
 	if (new_scene is PackedScene):
 		card_list.remove_at(0)
 		return new_scene

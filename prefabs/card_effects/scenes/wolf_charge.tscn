@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://b2vmxmdkqh0y2"]
+
+[ext_resource type="Script" uid="uid://sadpas0iwfg4" path="res://prefabs/card_effects/scripts/wolf_charge.gd" id="1_r1di3"]
+[ext_resource type="Texture2D" uid="uid://cf3xmdswh4qmj" path="res://sprites/cards/wolf_charge.png" id="2_h2rhc"]
+[ext_resource type="Resource" uid="uid://bcfuebhywq5gi" path="res://prefabs/units/spawn_data/dog_spawn.tres" id="3_h2rhc"]
+
+[node name="wolf_charge" type="Node"]
+script = ExtResource("1_r1di3")
+id = "wolf_charge"
+resource_cost = 1
+sprite = ExtResource("2_h2rhc")
+unit_spawn_data = ExtResource("3_h2rhc")
+card_text = "Summon a Dog in each lane"

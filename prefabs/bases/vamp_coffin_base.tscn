@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://7mh2f3n60553"]
+
+[ext_resource type="PackedScene" uid="uid://7r2kdnotps8f" path="res://prefabs/bases/base.tscn" id="1_rat24"]
+[ext_resource type="Texture2D" uid="uid://cirac8g0uano1" path="res://sprites/bases/vamp_coffin.png" id="2_sc5nu"]
+
+[node name="VampCoffinBase" instance=ExtResource("1_rat24")]
+hp = 8.0
+damage_return = 1.0
+reward = 2
+reward_amount = 2
+
+[node name="BaseSprite" parent="." index="0"]
+texture = ExtResource("2_sc5nu")

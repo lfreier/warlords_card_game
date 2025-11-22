@@ -1,0 +1,16 @@
+[gd_scene load_steps=7 format=3 uid="uid://dvy5ucp7jh67w"]
+
+[ext_resource type="PackedScene" uid="uid://c3kn7ul5x3fw4" path="res://prefabs/units/scenes/unit.tscn" id="1_axqx7"]
+[ext_resource type="Resource" uid="uid://dy87rfge3g2ey" path="res://prefabs/units/unit_data/wolfman_data.tres" id="2_1muvu"]
+[ext_resource type="Script" uid="uid://ba5iq6ido7taf" path="res://prefabs/units/scripts/wolfman_unit.gd" id="2_q77p2"]
+[ext_resource type="Script" uid="uid://km4l8mb2paxu" path="res://prefabs/units/spawn_data/unit_spawn_data.gd" id="3_3iabf"]
+[ext_resource type="Resource" uid="uid://cr0lkn2mbtjix" path="res://prefabs/units/spawn_data/werewolf_spawn.tres" id="4_ge664"]
+[ext_resource type="Texture2D" uid="uid://bsfqkju7afvuo" path="res://sprites/units/wolfman_1.png" id="5_ge664"]
+
+[node name="WolfmanUnit" instance=ExtResource("1_axqx7")]
+script = ExtResource("2_q77p2")
+unit_data = ExtResource("2_1muvu")
+spawn_units = Array[ExtResource("3_3iabf")]([ExtResource("4_ge664")])
+
+[node name="UnitSprite" parent="." index="1"]
+texture = ExtResource("5_ge664")

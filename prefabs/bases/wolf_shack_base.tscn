@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dnpgtbqtaslql"]
+
+[ext_resource type="PackedScene" uid="uid://7r2kdnotps8f" path="res://prefabs/bases/base.tscn" id="1_bqb6b"]
+[ext_resource type="Texture2D" uid="uid://bjajvmr11xmet" path="res://sprites/bases/wolf_shack.png" id="2_akpkj"]
+
+[node name="WolfShackBase" instance=ExtResource("1_bqb6b")]
+hp = 6.0
+damage_return = 1.0
+reward = 2
+reward_amount = 2
+
+[node name="BaseSprite" parent="." index="0"]
+texture = ExtResource("2_akpkj")

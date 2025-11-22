@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1tjr2g3fj0pu"]
+
+[ext_resource type="PackedScene" uid="uid://7r2kdnotps8f" path="res://prefabs/bases/base.tscn" id="1_8g3ux"]
+[ext_resource type="Texture2D" uid="uid://dq3b5nellicq7" path="res://sprites/bases/wolf_racks.png" id="2_6euod"]
+[ext_resource type="Resource" uid="uid://bcfuebhywq5gi" path="res://prefabs/units/spawn_data/dog_spawn.tres" id="2_n7m27"]
+
+[node name="WolfRacksBase" instance=ExtResource("1_8g3ux")]
+resource = 5
+resource_amount = 1
+resource_gen_time = 7.0
+resource_unit = ExtResource("2_n7m27")
+hp = 10.0
+damage_return = 1.0
+reward = 1
+reward_amount = 2
+
+[node name="BaseSprite" parent="." index="0"]
+texture = ExtResource("2_6euod")

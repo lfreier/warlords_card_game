@@ -2,6 +2,7 @@ class_name Hand
 extends Node2D
 
 @export var card_scene: PackedScene
+@export var card_holder: Node2D
 
 var actor: Actor
 var click_locked: bool
@@ -13,6 +14,9 @@ var card_clicked: bool
 var card_to_play: Card
 var hand_data: HandData
 var starting_position: Vector2
+
+func _physics_process(delta: float) -> void:
+	pass	
 
 func init(initActor: Actor) -> void:	
 	card_clicked = false
@@ -49,7 +53,7 @@ func draw(count: int) -> void:
 		if (new_effect is CardEffect):
 			new_card = card_scene.instantiate(PackedScene.GEN_EDIT_STATE_MAIN)
 			new_card.set_data(new_effect)
-			self.add_child(new_card)
+			card_holder.add_child(new_card)
 			if (deck != null):
 				held_cards.append(new_card)
 				new_card.init(self)
@@ -91,7 +95,7 @@ func sort_hand() -> void:
 		new_position.y = 0
 		curr_card.position = new_position
 		curr_card.origin_pos = new_position
-		curr_card.z_index = i
+		curr_card.z_index = i + globals.VisualLayers.CARD
 
 func play_card() -> void:
 	var card: Card = null

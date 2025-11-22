@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://g60g583prw14"]
+
+[ext_resource type="Script" uid="uid://vv0p2xrdobwh" path="res://prefabs/card_effects/scripts/moon_draw.gd" id="1_oeeic"]
+[ext_resource type="Texture2D" uid="uid://bwlhvp14l4w77" path="res://sprites/cards/moon_draw.png" id="2_fbaq7"]
+
+[node name="moon_draw" type="Node"]
+script = ExtResource("1_oeeic")
+amount_to_draw = 2
+id = "moon_draw"
+resource_cost = 1
+sprite = ExtResource("2_fbaq7")
+card_text = "Draw 2 cards. If Night, draw 1 additional card."

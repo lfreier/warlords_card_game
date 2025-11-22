@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://sygwwbh3jkoj"]
+
+[ext_resource type="Script" uid="uid://dh1hi0bmvw7pj" path="res://prefabs/auras/scripts/stat_unit_aura.gd" id="1_dwegr"]
+
+[node name="HowlAura" type="Node2D"]
+script = ExtResource("1_dwegr")

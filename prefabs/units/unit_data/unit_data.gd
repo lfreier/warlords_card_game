@@ -1,0 +1,18 @@
+class_name UnitData
+extends Resource
+
+@export var id: String
+
+@export var speed: float
+@export var hp: float
+
+@export var attack_damage: float
+@export var attack_speed: float
+@export var attack_startup_speed: float
+
+@export var texture: Texture2D
+
+# how long until the unit replenishes
+@export var replenish_time: float
+# will keep replenishing, even if not placed
+@export var replenish_stacking: bool
