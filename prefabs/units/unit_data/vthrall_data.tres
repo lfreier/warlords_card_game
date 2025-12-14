@@ -12,5 +12,5 @@ attack_damage = 1.5
 attack_speed = 1.0
 attack_startup_speed = 1.0
 texture = ExtResource("2_gxka2")
-tags = Array[int]([1])
+tags = Array[int]([1, 0])
 metadata/_custom_type_script = "uid://t32n24n8nlk6"

@@ -33,6 +33,7 @@ var sprite_timer: float = 0
 @export var sprite: Sprite2D
 @export var spawn_units: Array[UnitSpawnData]
 @export var attack_animator: AnimationPlayer
+@export var hp_bar: ProgressBar
 var attack_anim_played: bool = false
 
 var dmg_list: Array[float]
@@ -95,6 +96,7 @@ func init(init_lane: Lane, direction: bool, starting_state: Unit.UnitState) -> v
 	self.area_entered.connect(hit_area, 0)
 	lane = init_lane
 	hp = unit_data.hp
+	hp_bar.max_value = unit_data.hp
 	damage = unit_data.attack_damage
 	attack_speed = unit_data.attack_speed
 	move_speed = unit_data.speed * globals.UNIT_MOVE_MULT
@@ -182,6 +184,7 @@ func on_kill_effects(killed: AttackableArea) -> void:
 		new_summ.global_position = Vector2(self.global_position.x + move_force, self.global_position.y)
 
 func update_labels() -> void:
+	hp_bar.value = hp
 	($hp_text as Label).text = "hp: " + String.num(hp)
 	($move_text as Label).text = "move: " + String.num(move_speed)
 	($damage_text as Label).text = "damage: " + String.num(damage)

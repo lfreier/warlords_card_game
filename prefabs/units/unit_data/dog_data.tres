@@ -7,7 +7,7 @@
 script = ExtResource("1_y5dbr")
 id = "dog"
 speed = 14.0
-hp = 3.0
+hp = 4.0
 attack_damage = 0.5
 attack_speed = 0.5
 attack_startup_speed = 0.5
