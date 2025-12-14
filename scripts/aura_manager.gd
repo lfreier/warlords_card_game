@@ -22,17 +22,17 @@ func start_manager() -> void:
 	mutex = true
 	timer = globals.global_cd_time
 	aura_list.clear()
-	auras_to_add.clear()
 	
 func stop_manager() -> void:
 	signals.new_aura.disconnect(create_new_aura)
 	aura_list.clear()
 	auras_to_add.clear()
 
-func create_new_aura(target: Node, aura_data: AuraData) -> void:
+func create_new_aura(target: Node, aura_data: AuraData, is_player: bool) -> void:
 	mutex = false
 	var new_aura: Aura = aura_data.prefab.instantiate()
 	new_aura.aura_data = aura_data
+	new_aura.is_player = is_player
 	if (new_aura.aura_data.length_in_seconds >= 0):
 		#don't change infinite
 		new_aura.aura_data.length_in_ticks = roundi(new_aura.aura_data.length_in_seconds / globals.global_cd_time)
@@ -49,6 +49,9 @@ func create_new_aura(target: Node, aura_data: AuraData) -> void:
 
 func timer_tick() -> void:
 	for curr: Aura in auras_to_add:
+		if (curr == null):
+			#aura target died or something
+			continue
 		# hacky way for auras to have correct length
 		curr.ticks_remaining = curr.aura_data.length_in_ticks + 1
 		aura_list.append(curr)
@@ -72,3 +75,4 @@ func timer_tick() -> void:
 	for curr: Aura in auras_to_remove:
 		curr.remove_effect()
 		aura_list.erase(curr)
+		curr.queue_free()

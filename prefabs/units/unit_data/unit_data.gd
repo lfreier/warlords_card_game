@@ -16,3 +16,10 @@ extends Resource
 @export var replenish_time: float
 # will keep replenishing, even if not placed
 @export var replenish_stacking: bool
+
+@export var tags: Array[Defs.UnitTag]
+
+@export var reward_blood_pips: int = 1
+
+@export var resource_on_death: Defs.ArmyResource
+@export var resource_on_death_count: int

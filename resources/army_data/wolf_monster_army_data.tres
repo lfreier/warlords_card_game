@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ArmyData" load_steps=7 format=3 uid="uid://p73f2dfpe4t7"]
+
+[ext_resource type="Script" uid="uid://km4l8mb2paxu" path="res://prefabs/units/spawn_data/unit_spawn_data.gd" id="1_nqued"]
+[ext_resource type="Resource" uid="uid://bcfuebhywq5gi" path="res://prefabs/units/spawn_data/dog_spawn.tres" id="2_6xhpf"]
+[ext_resource type="Script" uid="uid://ckbu2mgmx8rl4" path="res://resources/army_data/army_data.gd" id="2_ufjug"]
+[ext_resource type="Resource" uid="uid://dweqm4mm3i750" path="res://prefabs/units/spawn_data/wolf_acolyte_spawn.tres" id="3_6xhpf"]
+[ext_resource type="Resource" uid="uid://bt0uhkvgxlmq6" path="res://prefabs/units/spawn_data/wolf_spawn.tres" id="4_xc5c5"]
+[ext_resource type="Resource" uid="uid://cmyjq0eapl4su" path="res://prefabs/units/spawn_data/wolfman_spawn.tres" id="5_a181s"]
+
+[resource]
+script = ExtResource("2_ufjug")
+replenishing_units = Array[ExtResource("1_nqued")]([ExtResource("2_6xhpf"), ExtResource("3_6xhpf"), ExtResource("4_xc5c5"), ExtResource("5_a181s")])
+metadata/_custom_type_script = "uid://ckbu2mgmx8rl4"

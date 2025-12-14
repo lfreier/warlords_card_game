@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="AuraData" load_steps=3 format=3 uid="uid://delhwhkxwcn8d"]
+
+[ext_resource type="Script" uid="uid://b0ge3x30pm1pw" path="res://prefabs/auras/data/aura_data.gd" id="1_eunmu"]
+[ext_resource type="PackedScene" uid="uid://civsc7y46ch05" path="res://prefabs/auras/scenes/lane_speed_aura.tscn" id="1_ynijs"]
+
+[resource]
+script = ExtResource("1_eunmu")
+target_type = 1
+prefab = ExtResource("1_ynijs")
+stat_changes = Array[int]([0])
+stat_changes_amount = Array[float]([0.5])
+length_in_seconds = -1.0
+length_in_ticks = -1
+metadata/_custom_type_script = "uid://b0ge3x30pm1pw"

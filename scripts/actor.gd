@@ -12,10 +12,10 @@ var replenishing_units: Array[UnitSpawnData]
 var player_units: Dictionary[String, UnitSpawnData]
 var supply_count: Dictionary[String, int]
 
-var night_resource_gain: Dictionary[globals.ArmyResource, int] = {globals.ArmyResource.BLOOD: 1, globals.ArmyResource.CARD: 1}
+var night_resource_gain: Dictionary[Defs.ArmyResource, int] = {Defs.ArmyResource.BLOOD_FILL: 2, Defs.ArmyResource.CARD: 1}
 
 var blood_fill_count: int = 0
-var blood_fill_max:int = 3
+var blood_fill_max:int = 5
 
 @export var army_data: ArmyData
 @export var hand_scene: PackedScene
@@ -28,8 +28,12 @@ var blood_fill_max:int = 3
 @export var ub_offset: float
 @export var unit_button_scene: PackedScene
 
+var blood_list: Array[int]
+var wood_list: Array[int]
+
 func _ready() -> void:
 	signals.base_placement_done.connect(init)
+	signals.set_player_deck.connect(set_deck)
 	
 func _process(delta: float) -> void:	
 	for key in unit_buttons:
@@ -37,11 +41,25 @@ func _process(delta: float) -> void:
 		var delta_curr = delta * globals.env_timescale
 		if (button.progress_timer(delta_curr)):
 			update_unit_supply(button.unit_data.id, 1, is_player)
+	while (blood_list.size() > 0):
+		blood_count += blood_list[0]
+		blood_list.remove_at(0)
+		signals.update_hud_counters.emit(blood_count, Defs.ArmyResource.BLOOD, is_player)
+	while (wood_list.size() > 0):
+		wood_count += wood_list[0]
+		wood_list.remove_at(0)
+		signals.update_hud_counters.emit(wood_count, Defs.ArmyResource.WOOD, is_player)
+	if (blood_count < 0):
+		blood_count = 0
+	if (wood_count < 0):
+		wood_count = 0
 
-func init() -> void:
+func init(reset: bool) -> void:
+	if (!reset):
+		return
 	hand = hand_scene.instantiate(PackedScene.GEN_EDIT_STATE_MAIN)
 	for i in range(0, card_list.size()):
-		for j in range(0, 3):
+		for j in range(0, 2):
 			deck.add_card(card_list[i], false)
 	deck.shuffle()
 	self.add_child(hand)
@@ -64,8 +82,20 @@ func draw(count: int) -> void:
 	hand.draw(count)
 	deck_change()
 	
+func draw_delay(count: int, delay_time: float) -> void:
+	var timer = Timer.new()
+	timer.one_shot = true
+	timer.wait_time = delay_time
+	timer.timeout.connect(draw.bind(count))
+	add_child(timer)
+	timer.start()
+	
 func deck_change() -> void:
 	deck_count.text = str(deck.card_list.size())
+
+func set_deck(deck_data: DeckData) -> void:
+	card_list = deck_data.deck_list.duplicate()
+	army_data = deck_data.army_data.duplicate()
 
 func get_hand_data() -> HandData:
 	return hand_data
@@ -78,16 +108,16 @@ func update_unit_supply(id: String, amount: int, player_check: bool) -> void:
 	supply_count[id] += amount
 	signals.change_unit_supply_display.emit(id, supply_count[id], is_player)
 
-func get_base_reward(reward: globals.ArmyResource, amount: int, source: bool, extra: String) -> void:
+func get_base_reward(reward: Defs.ArmyResource, amount: int, source: bool, extra: String) -> void:
 	#is_player is basically just checking teams, even though this looks weird
 	if (source != is_player):
 		return
 	match reward:
-		globals.ArmyResource.CARD:
+		Defs.ArmyResource.CARD:
 			draw(amount)
-		globals.ArmyResource.BLOOD:
+		Defs.ArmyResource.BLOOD:
 			update_blood(amount)
-		globals.ArmyResource.BLOOD_FILL:
+		Defs.ArmyResource.BLOOD_FILL:
 			blood_fill_count += amount
 			if (blood_fill_count >= blood_fill_max):
 				var blood_inc = 0
@@ -95,19 +125,18 @@ func get_base_reward(reward: globals.ArmyResource, amount: int, source: bool, ex
 					blood_fill_count -= blood_fill_max
 					blood_inc += 1
 				update_blood(blood_inc)
-			signals.update_hud_counters.emit(blood_fill_count, globals.ArmyResource.BLOOD_FILL, is_player)
-		globals.ArmyResource.WOOD:
+			signals.update_hud_counters.emit(blood_fill_count, Defs.ArmyResource.BLOOD_FILL, is_player)
+		Defs.ArmyResource.WOOD:
 			update_wood(amount)
-		globals.ArmyResource.UNITS:
+		Defs.ArmyResource.UNITS:
 			signals.change_unit_supply.emit(extra, amount, is_player)
-		globals.ArmyResource.NONE:
+		Defs.ArmyResource.NONE:
 			pass
 	#TODO: basic thing for destroying bases?
 
 func spawn_unit_from_supply(target: Lane, id: String, check_player: bool) -> void:
 	if (supply_count.has(id) && check_player == is_player && (supply_count[id] > 0 || unit_buttons[id].charged)):
-		var new_unit: Unit = player_units[id].prefab.instantiate()
-		target.spawn_unit(new_unit, is_player)
+		target.spawn_unit(player_units[id].prefab, is_player)
 		
 		if (supply_count[id] > 0):
 			update_unit_supply(id, -1, is_player)
@@ -119,24 +148,18 @@ func spawn_unit_from_supply(target: Lane, id: String, check_player: bool) -> voi
 				unit_buttons[key].reset_timer()
 		
 		
-func process_day_change(from_time: globals.TimeOfDay) -> void:
-	if (from_time == globals.TimeOfDay.DAY):
+func process_day_change(from_time: Defs.TimeOfDay) -> void:
+	if (from_time == Defs.TimeOfDay.DAY):
 		#to nighttime
-		for key: globals.ArmyResource in night_resource_gain:
+		for key: Defs.ArmyResource in night_resource_gain:
 			var val = night_resource_gain[key]
 			get_base_reward(key, val, is_player, "")
 		
 func update_blood(amount: int) -> void:
-	blood_count += amount
-	if (blood_count < 0):
-		blood_count = 0
-	signals.update_hud_counters.emit(blood_count, globals.ArmyResource.BLOOD, is_player)
+	blood_list.append(amount)
 		
 func update_wood(amount: int) -> void:
-	wood_count += amount
-	if (wood_count < 0):
-		wood_count = 0
-	signals.update_hud_counters.emit(wood_count, globals.ArmyResource.WOOD, is_player)
+	wood_list.append(amount)
 
 #####
 ##### HELPER FUNCTIONS #####
@@ -144,10 +167,13 @@ func update_wood(amount: int) -> void:
 func create_spawn_lists() -> void:
 	for unit_spawn in army_data.replenishing_units:
 		player_units[unit_spawn.unit_data.id] = unit_spawn
-	var temp_units = deck.get_all_unit_spawn_data()
-	for unit_spawn in temp_units:
-		if (!player_units.has(unit_spawn.unit_data.id)):
-			player_units[unit_spawn.unit_data.id] = unit_spawn
+		
+	# no longer a need to check the deck
+	#var temp_units = deck.get_all_unit_spawn_data()
+	#for unit_spawn in temp_units:
+	#	if (unit_spawn.unit_data.replenish_time > 0 && !player_units.has(unit_spawn.unit_data.id)):
+	#		player_units[unit_spawn.unit_data.id] = unit_spawn
+	
 	replenishing_units.append_array(army_data.replenishing_units)
 	for unit_spawn: UnitSpawnData in replenishing_units:
 		if (unit_spawn.unit_data.replenish_time > 0 && !replenishing_units.has(unit_spawn)):

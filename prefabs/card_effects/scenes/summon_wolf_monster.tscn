@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cl4c2lo7w4kfc"]
+
+[ext_resource type="Script" uid="uid://dgwcjhonx5wtj" path="res://prefabs/card_effects/scripts/summon_wolf_monster.gd" id="1_ja32j"]
+[ext_resource type="Resource" uid="uid://bkn1yoarswsih" path="res://prefabs/units/spawn_data/wolf_monster_spawn.tres" id="2_agh41"]
+[ext_resource type="Texture2D" uid="uid://mu34hewx3k48" path="res://sprites/cards/summon_wolf_monster.png" id="2_nlwns"]
+
+[node name="summon_wolf_monster" type="Node"]
+script = ExtResource("1_ja32j")
+shrine_cost = 2
+id = "summon_wolf_monster"
+resource_cost = 3
+resource_type = 2
+sprite = ExtResource("2_nlwns")
+target_type = 1
+unit_spawn_data = ExtResource("2_agh41")
+card_text = "Destroy 2 Shrines to summon the Primeval Wolf"
+card_name = "Ancient Seance"

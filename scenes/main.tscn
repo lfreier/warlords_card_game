@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dbt30in5gmt27"]
+[gd_scene load_steps=32 format=3 uid="uid://dbt30in5gmt27"]
 
 [ext_resource type="Script" uid="uid://crcu2xhn4nd65" path="res://scripts/card_scene_manager.gd" id="1_m7dmi"]
 [ext_resource type="Script" uid="uid://b5ru75k7g4ctj" path="res://scripts/input_reader.gd" id="1_s1p2v"]
@@ -9,9 +9,11 @@
 [ext_resource type="Texture2D" uid="uid://c15oshwqdkjhc" path="res://sprites/moon_icon.png" id="6_jscy8"]
 [ext_resource type="Script" uid="uid://c4xpbmnd0vk8x" path="res://scripts/basic_ai.gd" id="6_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://b1e7ghvr5dwij" path="res://scenes/lane.tscn" id="6_tefeu"]
+[ext_resource type="PackedScene" uid="uid://cf0dqaydnrji3" path="res://scenes/deck_selection.tscn" id="7_2wyq8"]
 [ext_resource type="PackedScene" uid="uid://mtwwybu81vay" path="res://prefabs/bases/vamp_racks_base.tscn" id="7_jbj1t"]
 [ext_resource type="PackedScene" uid="uid://7mh2f3n60553" path="res://prefabs/bases/vamp_coffin_base.tscn" id="8_0ld40"]
 [ext_resource type="PackedScene" uid="uid://cabrwouk1sqxv" path="res://prefabs/units/scenes/vamp_unit.tscn" id="8_85g3d"]
+[ext_resource type="PackedScene" uid="uid://dmfymhiqblqm0" path="res://scenes/difficulty_selection.tscn" id="8_vxglm"]
 [ext_resource type="PackedScene" uid="uid://dnpgtbqtaslql" path="res://prefabs/bases/wolf_shack_base.tscn" id="9_gqmmt"]
 [ext_resource type="PackedScene" uid="uid://c5hj5rsexayuo" path="res://scenes/hud_counter.tscn" id="11_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://dayyuffrsvyam" path="res://scenes/unit_button.tscn" id="13_jscy8"]
@@ -21,11 +23,26 @@
 [ext_resource type="PackedScene" uid="uid://csayofinu1iul" path="res://prefabs/bases/home_base.tscn" id="14_muem4"]
 [ext_resource type="Texture2D" uid="uid://chm3cg2yb3302" path="res://sprites/unit_button_fill.png" id="15_jbj1t"]
 [ext_resource type="PackedScene" uid="uid://c33klu0sosmb8" path="res://scenes/hud_fill_counter.tscn" id="16_dp3eg"]
+[ext_resource type="PackedScene" uid="uid://r662bfdx3n7d" path="res://prefabs/units/scenes/vlord_unit.tscn" id="18_y6deb"]
+[ext_resource type="PackedScene" uid="uid://bh7v5e8xjq6ny" path="res://prefabs/units/scenes/bat_unit.tscn" id="19_og1vs"]
+[ext_resource type="PackedScene" uid="uid://bqp65rx2wd3ue" path="res://prefabs/bases/home_base_enemy.tscn" id="19_pm3ni"]
 [ext_resource type="Texture2D" uid="uid://b4fgtu3nyb53q" path="res://sprites/sun_icon.png" id="20_yc10j"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_og1vs"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2wyq8"]
+bg_color = Color(0.24131897, 0.05321277, 0.07517, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_vxglm"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_2f3dj"]
+line_spacing = -10.0
+font = SubResource("SystemFont_vxglm")
+font_size = 52
 
 [node name="Main" type="Node2D" node_paths=PackedStringArray("lane_holder", "day_progress_bar")]
 script = ExtResource("1_m7dmi")
-lane_count = 7
+lane_count = 6
 lane_holder = NodePath("LaneContainer/LaneHolder")
 lane_node_count = 13
 lane_height = 200
@@ -33,9 +50,11 @@ lane_scene = ExtResource("6_tefeu")
 aura_manager_scene = ExtResource("4_choun")
 day_progress_bar = NodePath("DayTimer")
 time_of_day_icons = Array[Texture2D]([ExtResource("20_yc10j"), ExtResource("6_jscy8")])
-day_length = 10.0
-night_length = 5.0
+day_length = 20.0
+night_length = 10.0
 base_placement_scene = ExtResource("5_jbj1t")
+deck_selection_scene = ExtResource("7_2wyq8")
+diff_selection_scene = ExtResource("8_vxglm")
 enemy_bases = Array[PackedScene]([ExtResource("8_0ld40"), ExtResource("13_trceg"), ExtResource("7_jbj1t")])
 player_shack_prefab = ExtResource("9_gqmmt")
 
@@ -44,12 +63,12 @@ zoom = Vector2(0.5, 0.5)
 script = ExtResource("1_s1p2v")
 
 [node name="Player" parent="." instance=ExtResource("2_obytv")]
-card_list = Array[String](["give_buff", "summon_wolfman", "mih", "howl", "place_wolf_racks", "wolf_charge", "moon_draw"])
-ub_start_pos = Vector2(-1900, -1060)
+ub_start_pos = Vector2(-1900, -1070)
 ub_offset = 220.0
 unit_button_scene = ExtResource("13_jscy8")
 
 [node name="DrawButton" type="Button" parent="."]
+visible = false
 offset_left = 1650.0
 offset_top = 600.0
 offset_right = 1810.0
@@ -63,21 +82,55 @@ anchor_left = 0.5
 anchor_right = 0.5
 grow_horizontal = 2
 
-[node name="LaneHolder" type="Control" parent="LaneContainer"]
+[node name="LaneHolder" type="Control" parent="LaneContainer" node_paths=PackedStringArray("blood_fill_bar")]
 layout_mode = 1
 anchor_right = 0.46
 anchor_bottom = 0.32
-offset_top = -300.0
-offset_bottom = -300.0
+offset_top = -220.0
+offset_bottom = -220.0
 script = ExtResource("6_o6xl0")
 units = Array[PackedScene]([ExtResource("8_85g3d"), ExtResource("13_muem4")])
-spawn_timer = 3.0
+spawn_time_diffs = Array[float]([4.0, 0.0])
+blood_units = Array[PackedScene]([ExtResource("18_y6deb")])
+blood_units_cost = Array[int]([1])
+spawn_timers_difficulty = Array[float]([12.0, 10.0])
+blood_fill_max_difficulty = Array[int]([14, 10])
+minion_unit = ExtResource("19_og1vs")
+minion_spawn_timers_difficulty = Array[float]([18.0, 14.0])
+blood_fill_bar = NodePath("EnemyBloodCounter")
+basic_buildings = Array[PackedScene]([ExtResource("13_trceg"), ExtResource("7_jbj1t")])
+days_to_build = 1
 
 [node name="HomeBase" parent="LaneContainer/LaneHolder" instance=ExtResource("14_muem4")]
 position = Vector2(-1760, 0)
 
-[node name="HomeBase2" parent="LaneContainer/LaneHolder" instance=ExtResource("14_muem4")]
+[node name="HomeBaseEnemy" parent="LaneContainer/LaneHolder" instance=ExtResource("19_pm3ni")]
 position = Vector2(1760, 0)
+damage_return = 5.0
+
+[node name="EnemyBloodCounter" type="ProgressBar" parent="LaneContainer/LaneHolder"]
+layout_mode = 0
+offset_left = 1860.0
+offset_top = -400.0
+offset_right = 1910.0
+offset_bottom = 400.0
+theme_override_styles/background = SubResource("StyleBoxFlat_og1vs")
+theme_override_styles/fill = SubResource("StyleBoxFlat_2wyq8")
+fill_mode = 3
+show_percentage = false
+
+[node name="EnemyBloodText" type="Label" parent="LaneContainer/LaneHolder/EnemyBloodCounter"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 7.0
+offset_right = 45.0
+offset_bottom = 821.0
+text = "Enemy  
+Blood
+"
+label_settings = SubResource("LabelSettings_2f3dj")
+horizontal_alignment = 1
+autowrap_mode = 1
 
 [node name="TimerService" type="Node" parent="."]
 
@@ -103,13 +156,14 @@ offset_top = 550.0
 offset_right = -1800.0
 offset_bottom = 550.0
 resource_type = 3
-fill_max = 3
+fill_max = 5
 
 [node name="DayTimer" type="TextureProgressBar" parent="."]
-offset_left = -50.0
-offset_top = -1080.0
-offset_right = 50.0
-offset_bottom = -980.0
+offset_left = -87.5
+offset_top = -1050.0
+offset_right = 12.5
+offset_bottom = -950.0
+scale = Vector2(1.75, 1.75)
 fill_mode = 4
 texture_under = ExtResource("14_jkv2x")
 texture_over = ExtResource("20_yc10j")

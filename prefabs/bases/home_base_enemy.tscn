@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bqp65rx2wd3ue"]
+
+[ext_resource type="PackedScene" uid="uid://csayofinu1iul" path="res://prefabs/bases/home_base.tscn" id="1_q7ppy"]
+
+[node name="HomeBaseEnemy" instance=ExtResource("1_q7ppy")]
+
+[node name="ProgressBar" parent="." index="3"]
+offset_left = 55.0
+offset_right = 80.0

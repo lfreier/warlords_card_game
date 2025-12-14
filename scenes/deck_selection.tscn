@@ -1,0 +1,111 @@
+[gd_scene load_steps=11 format=3 uid="uid://cf0dqaydnrji3"]
+
+[ext_resource type="Script" uid="uid://dh26g7kmrjkjh" path="res://scripts/deck_selection.gd" id="1_3qtc8"]
+[ext_resource type="Script" uid="uid://c27p38slo6j8c" path="res://resources/deck_data/deck_data.gd" id="2_xc7bc"]
+[ext_resource type="Resource" uid="uid://bcskq6vfmajb5" path="res://resources/deck_data/wolf_decks/mass_wolves_deck.tres" id="3_uuj07"]
+[ext_resource type="Resource" uid="uid://cbmt7ejm4gqfp" path="res://resources/deck_data/wolf_decks/wolf_monster_deck.tres" id="4_t6p2p"]
+
+[sub_resource type="SystemFont" id="SystemFont_uuj07"]
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_t6p2p"]
+font = SubResource("SystemFont_uuj07")
+font_size = 32
+outline_size = 12
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_t6p2p"]
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_xc7bc"]
+font = SubResource("SystemFont_t6p2p")
+font_size = 32
+outline_size = 12
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_xc7bc"]
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_uuj07"]
+font = SubResource("SystemFont_xc7bc")
+font_size = 64
+outline_size = 28
+outline_color = Color(0, 0, 0, 1)
+
+[node name="DeckSelection" type="Control" node_paths=PackedStringArray("buttons", "labels")]
+layout_direction = 2
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -480.0
+offset_top = 420.0
+offset_right = 480.0
+offset_bottom = 820.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("1_3qtc8")
+decks = Array[ExtResource("2_xc7bc")]([ExtResource("3_uuj07"), ExtResource("4_t6p2p")])
+buttons = [NodePath("Button1"), NodePath("Button2")]
+labels = [NodePath("Button1/Label1"), NodePath("Button2/Label2")]
+
+[node name="Button1" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label1" type="Label" parent="Button1"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -23.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+label_settings = SubResource("LabelSettings_t6p2p")
+horizontal_alignment = 1
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label2" type="Label" parent="Button2"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -23.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+label_settings = SubResource("LabelSettings_xc7bc")
+horizontal_alignment = 1
+
+[node name="Explanation" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -260.5
+offset_top = -100.0
+offset_right = 260.5
+offset_bottom = -12.0
+grow_horizontal = 2
+text = "Select your deck:"
+label_settings = SubResource("LabelSettings_uuj07")

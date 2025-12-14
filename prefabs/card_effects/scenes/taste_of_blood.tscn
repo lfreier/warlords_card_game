@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://d555d2pfn35m"]
+
+[ext_resource type="Script" uid="uid://c5qu2bj7ur0xl" path="res://prefabs/card_effects/scripts/taste_of_blood.gd" id="1_2nydc"]
+[ext_resource type="Resource" uid="uid://qf0hunfi0wup" path="res://prefabs/auras/data/mark_aura.tres" id="2_cochh"]
+[ext_resource type="Texture2D" uid="uid://cocmlh3h7rtbk" path="res://sprites/cards/taste_of_blood.png" id="3_tjtoa"]
+[ext_resource type="Resource" uid="uid://c6v4nwschfic3" path="res://prefabs/units/spawn_data/dog_big_spawn.tres" id="4_8uwef"]
+
+[node name="taste_of_blood" type="Node"]
+script = ExtResource("1_2nydc")
+hunt_mark_data = ExtResource("2_cochh")
+id = "taste_of_blood"
+resource_cost = 2
+resource_type = 2
+sprite = ExtResource("3_tjtoa")
+target_type = 2
+unit_spawn_data = ExtResource("4_8uwef")
+card_text = "Apply Mark to a unit. Summon 2 Wolf Hunters in that unit's lane"
+card_name = "Taste of Blood"

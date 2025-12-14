@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="AuraData" load_steps=3 format=3 uid="uid://csqtg3ydusuvm"]
+
+[ext_resource type="PackedScene" uid="uid://wjihvqfqgon2" path="res://prefabs/auras/scenes/curse_aura.tscn" id="1_5njb7"]
+[ext_resource type="Script" uid="uid://b0ge3x30pm1pw" path="res://prefabs/auras/data/aura_data.gd" id="1_t4fah"]
+
+[resource]
+script = ExtResource("1_t4fah")
+prefab = ExtResource("1_5njb7")
+length_in_seconds = 10.0
+length_in_ticks = 40
+effect_strength = 1.0
+metadata/_custom_type_script = "uid://b0ge3x30pm1pw"

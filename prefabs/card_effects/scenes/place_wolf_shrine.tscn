@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bpdk3e03ov06w"]
+
+[ext_resource type="Script" uid="uid://b4aenfn4s4vmw" path="res://prefabs/card_effects/scripts/place_wolf_shrine.gd" id="1_w1lo6"]
+[ext_resource type="PackedScene" uid="uid://bg806hisvcfa4" path="res://prefabs/bases/wolf_shrine_base.tscn" id="2_m1y4k"]
+[ext_resource type="Texture2D" uid="uid://6euerbn8p0ac" path="res://sprites/cards/place_wolf_shrine.png" id="2_mtuaw"]
+
+[node name="place_wolf_shrine" type="Node"]
+script = ExtResource("1_w1lo6")
+base_to_place = ExtResource("2_m1y4k")
+draw_count = 1
+id = "place_wolf_shrine"
+resource_cost = 2
+resource_type = 4
+sprite = ExtResource("2_mtuaw")
+target_type = 1
+card_text = "Build a shrine to the Primeval Wolf. Draw a Card"
+card_name = "Construct: Shrine"

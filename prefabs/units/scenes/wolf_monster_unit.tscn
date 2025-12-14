@@ -1,0 +1,16 @@
+[gd_scene load_steps=7 format=3 uid="uid://bufp56u4jg22u"]
+
+[ext_resource type="PackedScene" uid="uid://c3kn7ul5x3fw4" path="res://prefabs/units/scenes/unit.tscn" id="1_tocau"]
+[ext_resource type="Script" uid="uid://dnrpgip4r11jc" path="res://prefabs/units/scripts/wolf_monster.gd" id="2_wj8dc"]
+[ext_resource type="Resource" uid="uid://ich3wg7kn4cw" path="res://prefabs/units/unit_data/wolf_monster.tres" id="2_yrnfu"]
+[ext_resource type="Texture2D" uid="uid://cqwybitvcusxr" path="res://sprites/units/wolf_units/wolf_monster.png" id="4_lq0pq"]
+[ext_resource type="Script" uid="uid://km4l8mb2paxu" path="res://prefabs/units/spawn_data/unit_spawn_data.gd" id="4_q3jm3"]
+[ext_resource type="Resource" uid="uid://bcfuebhywq5gi" path="res://prefabs/units/spawn_data/dog_spawn.tres" id="5_dnc56"]
+
+[node name="WolfMonsterUnit" instance=ExtResource("1_tocau")]
+script = ExtResource("2_wj8dc")
+unit_data = ExtResource("2_yrnfu")
+spawn_units = Array[ExtResource("4_q3jm3")]([ExtResource("5_dnc56")])
+
+[node name="UnitSprite" parent="." index="1"]
+texture = ExtResource("4_lq0pq")

@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bg806hisvcfa4"]
+
+[ext_resource type="PackedScene" uid="uid://7r2kdnotps8f" path="res://prefabs/bases/base.tscn" id="1_a8rbd"]
+[ext_resource type="Texture2D" uid="uid://bc7sq5synba4l" path="res://sprites/bases/wolf_shrine.png" id="2_7u8tq"]
+
+[node name="WolfShrineBase" instance=ExtResource("1_a8rbd")]
+resource = 3
+resource_amount = 1
+resource_gen_time = 10.0
+hp = 12.0
+reward = 3
+reward_amount = 2
+description = "A shrine to the Primeval Wolf. Generates 1 blood pip"
+extra = "is_shrine"
+
+[node name="BaseSprite" parent="." index="0"]
+texture = ExtResource("2_7u8tq")

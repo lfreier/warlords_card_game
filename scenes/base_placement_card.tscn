@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://chgwde0e7yrsj"]
+
+[ext_resource type="PackedScene" uid="uid://cwx4dbxvwu4vk" path="res://scenes/base_placement.tscn" id="1_v0nio"]
+[ext_resource type="PackedScene" uid="uid://dv16sqqpy7obs" path="res://scenes/base_place_button_card.tscn" id="2_o36wb"]
+
+[node name="BasePlacementCard" instance=ExtResource("1_v0nio")]
+z_index = 100
+offset_right = -310.0
+scale = Vector2(1.5, 1.5)
+base_placement_button = ExtResource("2_o36wb")
+
+[node name="DoneButton" parent="." index="0"]
+visible = false
+
+[node name="Explanation" parent="." index="1"]
+visible = false

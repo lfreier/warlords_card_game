@@ -1,6 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://dyqaxcnr0aqdo"]
+[gd_scene load_steps=3 format=3 uid="uid://dyqaxcnr0aqdo"]
 
 [ext_resource type="Script" uid="uid://dh1hi0bmvw7pj" path="res://prefabs/auras/scripts/stat_unit_aura.gd" id="1_u5cdf"]
+[ext_resource type="Texture2D" uid="uid://b661j74xwrr07" path="res://sprites/auras/dmg_aura.png" id="2_rmvp6"]
 
 [node name="StatAura" type="Node2D"]
 script = ExtResource("1_u5cdf")
+
+[node name="DmgSprite" type="Sprite2D" parent="."]
+z_index = 100
+position = Vector2(50, 70)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_rmvp6")

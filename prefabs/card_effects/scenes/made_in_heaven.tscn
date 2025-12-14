@@ -10,3 +10,4 @@ mih_data = ExtResource("2_4qtek")
 id = "mih"
 sprite = ExtResource("2_qs0ev")
 card_text = "Environment time moves 2x faster for 5 seconds"
+card_name = "Cursed Ritual"

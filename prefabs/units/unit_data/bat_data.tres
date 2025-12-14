@@ -1,17 +1,18 @@
 [gd_resource type="Resource" script_class="UnitData" load_steps=3 format=3 uid="uid://devtkmvwret7d"]
 
 [ext_resource type="Script" uid="uid://t32n24n8nlk6" path="res://prefabs/units/unit_data/unit_data.gd" id="1_1olg5"]
-[ext_resource type="Texture2D" uid="uid://fsou7ensmtcb" path="res://sprites/units/vamp_bat_swarm.png" id="2_x0hsb"]
+[ext_resource type="Texture2D" uid="uid://fsou7ensmtcb" path="res://sprites/units/vamp_units/vamp_bat_swarm.png" id="2_x0hsb"]
 
 [resource]
 script = ExtResource("1_1olg5")
 id = "bat"
 speed = 8.0
-hp = 5.0
+hp = 6.0
 attack_damage = 0.5
 attack_speed = 1.0
 attack_startup_speed = 1.0
 texture = ExtResource("2_x0hsb")
 replenish_time = 5.0
 replenish_stacking = true
+reward_blood_pips = 0
 metadata/_custom_type_script = "uid://t32n24n8nlk6"

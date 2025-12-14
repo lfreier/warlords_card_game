@@ -1,9 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://cu5hi4dhbwwuo"]
+[gd_scene load_steps=13 format=3 uid="uid://cu5hi4dhbwwuo"]
 
 [ext_resource type="Script" uid="uid://bmtmrvkqp8qqq" path="res://scripts/card.gd" id="1_h0s6w"]
 [ext_resource type="Texture2D" uid="uid://b6jsrhnmkthiu" path="res://sprites/card_back1.png" id="2_mmdvn"]
 [ext_resource type="Texture2D" uid="uid://cub7uu2dofkod" path="res://sprites/target_marker.png" id="3_ktuci"]
+[ext_resource type="Texture2D" uid="uid://4bsnpg4bfo44" path="res://sprites/cards/howl.png" id="3_sy11y"]
 [ext_resource type="Texture2D" uid="uid://dqvpeua3onb5u" path="res://sprites/card_cost_back1.png" id="4_kg30u"]
+[ext_resource type="Texture2D" uid="uid://bxo11v1lox2pa" path="res://sprites/aoe.png" id="5_6ligt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qbmb7"]
 size = Vector2(380, 560)
@@ -20,7 +22,16 @@ font_size = 64
 outline_size = 16
 outline_color = Color(0, 0, 0, 1)
 
-[node name="Card" type="StaticBody2D" node_paths=PackedStringArray("sprite", "back_sprite", "target_sprite", "card_text", "card_cost_back", "card_cost_text")]
+[sub_resource type="SystemFont" id="SystemFont_sy11y"]
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_8w5pg"]
+font = SubResource("SystemFont_sy11y")
+font_size = 24
+outline_size = 14
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Card" type="StaticBody2D" node_paths=PackedStringArray("sprite", "back_sprite", "target_sprite", "card_text", "card_cost_back", "card_cost_text", "card_name_text", "card_radius")]
 input_pickable = true
 script = ExtResource("1_h0s6w")
 sprite = NodePath("cardSprite")
@@ -29,12 +40,15 @@ target_sprite = NodePath("cardTarget")
 card_text = NodePath("cardText")
 card_cost_back = NodePath("cardCostBack")
 card_cost_text = NodePath("cardCostBack/cardCost")
+card_name_text = NodePath("cardName")
+card_radius = NodePath("cardTarget/cardRadius")
 
 [node name="cardBack" type="Sprite2D" parent="."]
 texture = ExtResource("2_mmdvn")
 
 [node name="cardSprite" type="Sprite2D" parent="."]
-position = Vector2(-1, -100)
+position = Vector2(-1, -81)
+texture = ExtResource("3_sy11y")
 
 [node name="cardCollider" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_qbmb7")
@@ -43,6 +57,10 @@ shape = SubResource("RectangleShape2D_qbmb7")
 visible = false
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("3_ktuci")
+
+[node name="cardRadius" type="Sprite2D" parent="cardTarget"]
+scale = Vector2(0.6666667, 0.6666667)
+texture = ExtResource("5_6ligt")
 
 [node name="cardText" type="Label" parent="."]
 offset_left = -160.0
@@ -66,5 +84,16 @@ offset_right = 22.0
 offset_bottom = 43.0
 text = "0"
 label_settings = SubResource("LabelSettings_kg30u")
+
+[node name="cardName" type="Label" parent="."]
+offset_left = -165.0
+offset_top = -274.0
+offset_right = 165.0
+offset_bottom = -224.0
+text = "Howl"
+label_settings = SubResource("LabelSettings_8w5pg")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]

@@ -8,6 +8,8 @@
 script = ExtResource("1_r1di3")
 id = "wolf_charge"
 resource_cost = 1
+resource_type = 2
 sprite = ExtResource("2_h2rhc")
 unit_spawn_data = ExtResource("3_h2rhc")
-card_text = "Summon a Dog in each lane"
+card_text = "Summon a Wolf Pup in each lane"
+card_name = "Call in the Dogs"

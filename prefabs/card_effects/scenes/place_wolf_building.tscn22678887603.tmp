@@ -1,0 +1,19 @@
+[gd_scene load_steps=7 format=3 uid="uid://btxhy272v51b4"]
+
+[ext_resource type="Script" uid="uid://du1dal3vc63k5" path="res://prefabs/card_effects/scripts/place_wolf_building.gd" id="1_xwn8e"]
+[ext_resource type="PackedScene" uid="uid://cob5cv0noslwl" path="res://prefabs/bases/wolf_hut_base.tscn" id="2_81f1v"]
+[ext_resource type="PackedScene" uid="uid://c1tjr2g3fj0pu" path="res://prefabs/bases/wolf_racks_base.tscn" id="2_y85xb"]
+[ext_resource type="Texture2D" uid="uid://dvx7gjv0u0351" path="res://sprites/cards/place_wolf_racks.png" id="3_81f1v"]
+[ext_resource type="PackedScene" uid="uid://cxmf3w114jn3m" path="res://prefabs/bases/wolf_grill_base.tscn" id="3_a4kt0"]
+[ext_resource type="PackedScene" uid="uid://chgwde0e7yrsj" path="res://scenes/base_placement_card.tscn" id="5_a4kt0"]
+
+[node name="place_wolf_building" type="Node"]
+script = ExtResource("1_xwn8e")
+bases_to_place = Array[PackedScene]([ExtResource("2_81f1v"), ExtResource("3_a4kt0"), ExtResource("2_y85xb")])
+base_placement_scene = ExtResource("5_a4kt0")
+id = "place_wolf_building"
+resource_cost = 3
+resource_type = 4
+sprite = ExtResource("3_81f1v")
+target_type = 1
+card_text = "Build a basic Wolf Building in target lane"

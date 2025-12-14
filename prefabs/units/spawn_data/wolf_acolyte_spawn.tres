@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="UnitSpawnData" load_steps=4 format=3 uid="uid://dweqm4mm3i750"]
+
+[ext_resource type="PackedScene" uid="uid://0chxxa5w7pxp" path="res://prefabs/units/scenes/wolf_acolyte_unit.tscn" id="1_1qvu6"]
+[ext_resource type="Script" uid="uid://km4l8mb2paxu" path="res://prefabs/units/spawn_data/unit_spawn_data.gd" id="1_qgobh"]
+[ext_resource type="Resource" uid="uid://c1ebbnj0jvge5" path="res://prefabs/units/unit_data/wolf_acolyte.tres" id="2_f7p2f"]
+
+[resource]
+script = ExtResource("1_qgobh")
+unit_data = ExtResource("2_f7p2f")
+prefab = ExtResource("1_1qvu6")
+metadata/_custom_type_script = "uid://km4l8mb2paxu"

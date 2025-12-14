@@ -8,7 +8,7 @@ func execute(source: Actor, target: Node2D) -> bool:
 		
 	source.update_blood(-resource_cost)
 	var draw: int = amount_to_draw
-	if (globals.time_of_day == globals.TimeOfDay.NIGHT):
+	if (globals.get_time_of_day() == Defs.TimeOfDay.NIGHT):
 		draw += 1
-	signals.player_draw.emit(draw)
+	source.draw_delay(draw, 0.1)
 	return true

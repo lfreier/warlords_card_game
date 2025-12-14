@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://c3u6j6jlukfk8"]
+
+[ext_resource type="Script" uid="uid://dpvi1daivi7vt" path="res://prefabs/card_effects/scripts/curse_of_reflection.gd" id="1_kxar5"]
+[ext_resource type="Texture2D" uid="uid://c7q2dixg4bqtx" path="res://sprites/cards/reflect_curse.png" id="2_8eccj"]
+[ext_resource type="Resource" uid="uid://csqtg3ydusuvm" path="res://prefabs/auras/data/curse_aura.tres" id="2_fsm38"]
+
+[node name="curse_reflect" type="Node"]
+script = ExtResource("1_kxar5")
+curse_aura_data = ExtResource("2_fsm38")
+id = "curse_reflect"
+resource_cost = 2
+resource_type = 2
+sprite = ExtResource("2_8eccj")
+target_type = 1
+card_text = "Curse all units in target Lane with damage over time. The damage is doubled at night"
+card_name = "Curse of Reflection"

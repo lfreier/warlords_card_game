@@ -34,7 +34,7 @@ func init(attached_unit: UnitSpawnData, order: int) -> void:
 		progress = 0.0
 		timer = 0.0
 		charged = false
-	z_index = globals.VisualLayers.HUD
+	z_index = Defs.VisualLayers.HUD
 	unit_data = attached_unit.unit_data
 	icon = unit_data.texture
 	unit_prefab = attached_unit.prefab
@@ -94,6 +94,12 @@ func update_unit_supply(id: String, amount: int, is_player: bool) -> void:
 			unit_count_label.text = ""
 		else:
 			unit_count_label.text = String.num_int64(amount)
+			
+		if (unit_data.replenish_stacking && curr_count != amount):
+			#change stacking replenish time for additional units
+			var new_time = unit_data.replenish_time + (amount * (unit_data.replenish_time * 0.2))
+			timer = (timer / progress_time) * new_time
+			progress_time = new_time
 		curr_count = amount
 	
 func on_click() -> void:

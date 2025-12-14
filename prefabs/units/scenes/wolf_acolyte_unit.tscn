@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://0chxxa5w7pxp"]
+
+[ext_resource type="PackedScene" uid="uid://c3kn7ul5x3fw4" path="res://prefabs/units/scenes/unit.tscn" id="1_4utj8"]
+[ext_resource type="Resource" uid="uid://c1ebbnj0jvge5" path="res://prefabs/units/unit_data/wolf_acolyte.tres" id="2_cbb8w"]
+[ext_resource type="Texture2D" uid="uid://iy63g73q3hy0" path="res://sprites/units/wolf_units/wolf_acolyte.png" id="3_01v51"]
+
+[node name="WolfAcolyteUnit" instance=ExtResource("1_4utj8")]
+unit_data = ExtResource("2_cbb8w")
+
+[node name="UnitSprite" parent="." index="1"]
+texture = ExtResource("3_01v51")

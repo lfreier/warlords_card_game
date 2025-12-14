@@ -5,8 +5,8 @@
 [node name="WolfHutBase" instance=ExtResource("1_8gv6q")]
 resource = 4
 resource_amount = 1
-resource_gen_time = 5.0
-hp = 6.0
-damage_return = 1.0
-reward = 2
-reward_amount = 3
+resource_gen_time = 15.0
+hp = 8.0
+reward = 3
+reward_amount = 2
+description = "Generates 1 Wood every 10 seconds"

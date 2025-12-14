@@ -1,0 +1,63 @@
+[gd_scene load_steps=4 format=3 uid="uid://dmfymhiqblqm0"]
+
+[ext_resource type="Script" uid="uid://dsqu4jl7i787i" path="res://scripts/difficulty_selection.gd" id="1_3y6n7"]
+
+[sub_resource type="SystemFont" id="SystemFont_xc7bc"]
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_3y6n7"]
+font = SubResource("SystemFont_xc7bc")
+font_size = 64
+outline_size = 28
+outline_color = Color(0, 0, 0, 1)
+
+[node name="DifficultySelection" type="Control" node_paths=PackedStringArray("buttons")]
+layout_direction = 2
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -480.0
+offset_top = 420.0
+offset_right = 480.0
+offset_bottom = 820.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("1_3y6n7")
+buttons = [NodePath("Button1"), NodePath("Button2")]
+
+[node name="Button1" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 80
+text = "NORMAL"
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 80
+text = "HARD"
+
+[node name="Explanation" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -260.5
+offset_top = -100.0
+offset_right = 339.5
+offset_bottom = -12.0
+grow_horizontal = 2
+text = "Select difficulty:"
+label_settings = SubResource("LabelSettings_3y6n7")
+horizontal_alignment = 1

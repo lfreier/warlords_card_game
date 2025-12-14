@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cxmf3w114jn3m"]
+
+[ext_resource type="PackedScene" uid="uid://7r2kdnotps8f" path="res://prefabs/bases/base.tscn" id="1_tyyxv"]
+[ext_resource type="Resource" uid="uid://delhwhkxwcn8d" path="res://prefabs/auras/data/lane_speed_aura.tres" id="2_0a7b3"]
+[ext_resource type="Texture2D" uid="uid://brppiu0kjjxqd" path="res://sprites/bases/wolf_grill.png" id="3_p7isa"]
+
+[node name="WolfGrillBase" instance=ExtResource("1_tyyxv")]
+resource = 3
+resource_amount = 2
+resource_gen_time = 20.0
+hp = 8.0
+reward = 1
+reward_amount = 1
+base_aura = ExtResource("2_0a7b3")
+description = "Ally lane units have +50% speed, Generates 2 blood pips"
+
+[node name="BaseSprite" parent="." index="0"]
+texture = ExtResource("3_p7isa")

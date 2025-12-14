@@ -31,14 +31,17 @@ func remove_effect() -> void:
 func change_base_stat(changes: StatChange, amount: float) -> void:
 	match changes:
 		StatChange.DAMAGE:
-			(target as Base).damage_return += amount
+			(target as Base).damage_return *= (1.0 - amount)
 		StatChange.ATK_SPEED:
 			(target as Base).resource_gen_time *= (1.0 - amount)
 
 func change_unit_stat(changes: StatChange, amount: float) -> void:	
 	match changes:
 		StatChange.DAMAGE:
-			(target as Unit).damage += amount
+			if (amount > 0):
+				(target as Unit).damage *= (1.0 + amount)
+			else:
+				(target as Unit).damage /= (1.0 - amount)
 		StatChange.ATK_SPEED:
 			if (amount > 0):
 				(target as Unit).attack_speed *= (1.0 - amount)
@@ -46,6 +49,9 @@ func change_unit_stat(changes: StatChange, amount: float) -> void:
 				(target as Unit).attack_speed /= (1.0 + amount)
 				
 		StatChange.MOVE_SPEED:
-			(target as Unit).move_speed += amount
+			if (amount > 0):
+				(target as Unit).move_speed *= (1.0 + amount)
+			else:
+				(target as Unit).move_speed /= (1.0 - amount)
 	
 	(target as Unit).update_labels()

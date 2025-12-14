@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dv16sqqpy7obs"]
+
+[ext_resource type="PackedScene" uid="uid://0f6xfdrrtekh" path="res://scenes/base_place_button.tscn" id="1_7neul"]
+
+[node name="BasePlaceButtonCard" instance=ExtResource("1_7neul")]
+confirm = false

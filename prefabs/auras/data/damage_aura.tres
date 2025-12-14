@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="AuraData" load_steps=3 format=3 uid="uid://cs4jngcyg0gew"]
+
+[ext_resource type="PackedScene" uid="uid://dyqaxcnr0aqdo" path="res://prefabs/auras/scenes/stat_aura.tscn" id="1_wrx8b"]
+[ext_resource type="Script" uid="uid://b0ge3x30pm1pw" path="res://prefabs/auras/data/aura_data.gd" id="2_u2qxc"]
+
+[resource]
+script = ExtResource("2_u2qxc")
+prefab = ExtResource("1_wrx8b")
+stat_changes = Array[int]([2])
+stat_changes_amount = Array[float]([0.4])
+length_in_seconds = 8.0
+length_in_ticks = 32
+metadata/_custom_type_script = "uid://b0ge3x30pm1pw"

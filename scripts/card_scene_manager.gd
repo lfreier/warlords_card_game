@@ -20,6 +20,8 @@ var day_progress: float
 var aura_manager: AuraManager
 
 @export var base_placement_scene: PackedScene
+@export var deck_selection_scene: PackedScene
+@export var diff_selection_scene: PackedScene
 @export var enemy_bases: Array[PackedScene]
 
 @export var player_shack_prefab: PackedScene
@@ -28,20 +30,34 @@ var done: bool
 
 func _init() -> void:
 	signals.player_init_done.connect(setup_scene)
+	signals.next_intro_scene.connect(next_scene)
 
 func _ready() -> void:		
-	init_lanes()
-	var placement: BasePlacement = base_placement_scene.instantiate()
-	self.add_child(placement)
-	placement.init()
+	next_scene("")
 	
+func next_scene(scene: String) -> void:
+	if (scene == ""):
+		Engine.time_scale = 0
+		var diff: DifficultySelection = diff_selection_scene.instantiate()
+		self.add_child(diff)
+		diff.init()
+	elif (scene == "diff"):
+		var selection: DeckSelection = deck_selection_scene.instantiate()
+		self.add_child(selection)
+		selection.init()
+	elif (scene == "deck"):
+		init_lanes()
+		var placement: BasePlacement = base_placement_scene.instantiate()
+		self.add_child(placement)
+		placement.init(null, [null])
+
 func setup_scene() -> void:
 	AuraManager.start_manager()
 	day_timer = day_length
 	curr_period_length = day_length
-	globals.time_of_day = globals.TimeOfDay.DAY
+	globals.time_of_day = Defs.TimeOfDay.DAY
 	day_progress = 0
-	day_progress_bar.texture_over = time_of_day_icons[globals.TimeOfDay.DAY]
+	day_progress_bar.texture_over = time_of_day_icons[Defs.TimeOfDay.DAY]
 	
 func _process(delta: float) -> void:
 	var delta_curr = delta * globals.env_timescale
@@ -58,13 +74,13 @@ func _process(delta: float) -> void:
 		
 func change_time_of_day() -> float:
 	signals.day_change.emit(globals.time_of_day)
-	if (globals.time_of_day == globals.TimeOfDay.DAY):
-		globals.time_of_day = globals.TimeOfDay.NIGHT
-		day_progress_bar.texture_over = time_of_day_icons[globals.TimeOfDay.NIGHT]
+	if (globals.time_of_day == Defs.TimeOfDay.DAY):
+		globals.time_of_day = Defs.TimeOfDay.NIGHT
+		day_progress_bar.texture_over = time_of_day_icons[Defs.TimeOfDay.NIGHT]
 		return night_length
 	else:
-		globals.time_of_day = globals.TimeOfDay.DAY
-		day_progress_bar.texture_over = time_of_day_icons[globals.TimeOfDay.DAY]
+		globals.time_of_day = Defs.TimeOfDay.DAY
+		day_progress_bar.texture_over = time_of_day_icons[Defs.TimeOfDay.DAY]
 		return day_length
 
 func init_lanes() -> void:
@@ -80,8 +96,6 @@ func init_lanes() -> void:
 		lane_holder.add_child(new_lane, true, Node.INTERNAL_MODE_DISABLED)
 		new_lane.init(lane_node_count, lane_start_y + (i * lane_height))
 		
-		var enemy_shack: Base = enemy_bases[0].instantiate()
-		new_lane.add_base(enemy_shack, false)
+		new_lane.add_base(enemy_bases[0], false)
 		
-		var player_shack: Base = player_shack_prefab.instantiate()
-		new_lane.add_base(player_shack, true)
+		new_lane.add_base(player_shack_prefab, true)

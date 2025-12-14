@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="DeckData" load_steps=4 format=3 uid="uid://cbmt7ejm4gqfp"]
+
+[ext_resource type="Texture2D" uid="uid://mu34hewx3k48" path="res://sprites/cards/summon_wolf_monster.png" id="1_flbej"]
+[ext_resource type="Script" uid="uid://c27p38slo6j8c" path="res://resources/deck_data/deck_data.gd" id="1_wy8gk"]
+[ext_resource type="Resource" uid="uid://p73f2dfpe4t7" path="res://resources/army_data/wolf_monster_army_data.tres" id="1_yafap"]
+
+[resource]
+script = ExtResource("1_wy8gk")
+deck_list = Array[String](["blood_for_blood", "place_wolf_shrine", "place_wolf_building", "summon_wolf_monster", "moon_draw", "wolf_claw", "curse_reflect"])
+deck_cover = ExtResource("1_flbej")
+deck_title = "Summon the Ancient"
+army_data = ExtResource("1_yafap")
+metadata/_custom_type_script = "uid://c27p38slo6j8c"

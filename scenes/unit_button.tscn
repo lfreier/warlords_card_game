@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://dayyuffrsvyam"]
 
-[ext_resource type="Texture2D" uid="uid://n37ctvb73mhy" path="res://sprites/units/wolf1.png" id="1_0wvml"]
+[ext_resource type="Texture2D" uid="uid://n37ctvb73mhy" path="res://sprites/units/wolf_units/wolf1.png" id="1_0wvml"]
 [ext_resource type="Script" uid="uid://otyttewf7jvl" path="res://scripts/unit_spawn.gd" id="2_seikq"]
 [ext_resource type="Texture2D" uid="uid://raujddfpwqs" path="res://sprites/unit_button_bg.png" id="4_dikqe"]
 [ext_resource type="Texture2D" uid="uid://dk0k75w3qio2c" path="res://sprites/key_bg.png" id="4_mgfc2"]
@@ -35,7 +35,6 @@ icon = ExtResource("1_0wvml")
 icon_alignment = 1
 expand_icon = true
 script = ExtResource("2_seikq")
-target_layer = 4
 unit_count_label = NodePath("UnitCount")
 key_num_label = NodePath("KeySprite/KeyNum")
 progress_bar = NodePath("CircleProgressBar")

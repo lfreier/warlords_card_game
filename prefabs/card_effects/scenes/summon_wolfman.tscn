@@ -7,6 +7,9 @@
 [node name="summon_wolfman" type="Node"]
 script = ExtResource("1_ahtyr")
 id = "summon_wolfman"
-blood_cost = 2
+resource_cost = 1
+resource_type = 2
 sprite = ExtResource("2_uxy8f")
 unit_spawn_data = ExtResource("3_1h4cc")
+card_text = "Add Wolfman to supply"
+card_name = "Convert the Locals"

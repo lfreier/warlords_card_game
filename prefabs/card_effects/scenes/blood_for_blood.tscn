@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dshfbstkosbl8"]
+
+[ext_resource type="Script" uid="uid://mw5vjlydl6p4" path="res://prefabs/card_effects/scripts/blood_for_blood.gd" id="1_bxips"]
+[ext_resource type="Texture2D" uid="uid://da52o053kp2h5" path="res://sprites/cards/blood_for_blood.png" id="2_sdxe1"]
+
+[node name="blood_for_blood" type="Node"]
+script = ExtResource("1_bxips")
+blood_given = 3
+id = "blood_for_blood"
+resource_cost = 1
+resource_type = 2
+sprite = ExtResource("2_sdxe1")
+target_type = 2
+card_text = "Sacrifice a friendly unit to generate 3 Blood"
+card_name = "Blood for Blood"

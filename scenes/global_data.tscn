@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b5bnemwid2bec"]
+[gd_scene load_steps=22 format=3 uid="uid://b5bnemwid2bec"]
 
 [ext_resource type="Script" uid="uid://tuip1mnaujhr" path="res://scripts/data.gd" id="1_gwtl6"]
 [ext_resource type="PackedScene" uid="uid://q54nvkdl1nk5" path="res://prefabs/card_effects/scenes/summon_wolf.tscn" id="2_6hutw"]
@@ -11,24 +11,38 @@
 [ext_resource type="PackedScene" uid="uid://dtucngcnafdbn" path="res://prefabs/card_effects/scenes/give_buff.tscn" id="8_qrckj"]
 [ext_resource type="PackedScene" uid="uid://bq5ixcbl8ukbg" path="res://prefabs/card_effects/scenes/made_in_heaven.tscn" id="9_emu8l"]
 [ext_resource type="PackedScene" uid="uid://dxql87sy5i07a" path="res://prefabs/card_effects/scenes/howl.tscn" id="10_sjbhu"]
-[ext_resource type="PackedScene" uid="uid://btxhy272v51b4" path="res://prefabs/card_effects/scenes/place_wolf_racks.tscn" id="11_70ipk"]
+[ext_resource type="PackedScene" uid="uid://btxhy272v51b4" path="res://prefabs/card_effects/scenes/place_wolf_building.tscn" id="11_70ipk"]
 [ext_resource type="PackedScene" uid="uid://b2vmxmdkqh0y2" path="res://prefabs/card_effects/scenes/wolf_charge.tscn" id="12_5355i"]
 [ext_resource type="PackedScene" uid="uid://g60g583prw14" path="res://prefabs/card_effects/scenes/moon_draw.tscn" id="13_7pq6h"]
+[ext_resource type="PackedScene" uid="uid://d555d2pfn35m" path="res://prefabs/card_effects/scenes/taste_of_blood.tscn" id="14_0hleb"]
+[ext_resource type="PackedScene" uid="uid://bxtm2oxnb13gh" path="res://prefabs/card_effects/scenes/wolf_claw.tscn" id="15_pgtd7"]
+[ext_resource type="PackedScene" uid="uid://busmc6vf3rcmv" path="res://scenes/resource_popup.tscn" id="16_1wnaj"]
+[ext_resource type="PackedScene" uid="uid://bpdk3e03ov06w" path="res://prefabs/card_effects/scenes/place_wolf_shrine.tscn" id="16_rhfjq"]
+[ext_resource type="PackedScene" uid="uid://cl4c2lo7w4kfc" path="res://prefabs/card_effects/scenes/summon_wolf_monster.tscn" id="17_oe1nx"]
+[ext_resource type="PackedScene" uid="uid://dshfbstkosbl8" path="res://prefabs/card_effects/scenes/blood_for_blood.tscn" id="18_lpwe1"]
+[ext_resource type="PackedScene" uid="uid://c3u6j6jlukfk8" path="res://prefabs/card_effects/scenes/curse_reflect.tscn" id="19_mlooh"]
 
 [node name="global_data" type="Node"]
 script = ExtResource("1_gwtl6")
 card_db_scenes = Dictionary[String, PackedScene]({
+"blood_for_blood": ExtResource("18_lpwe1"),
+"curse_reflect": ExtResource("19_mlooh"),
 "give_buff": ExtResource("8_qrckj"),
 "howl": ExtResource("10_sjbhu"),
 "mih": ExtResource("9_emu8l"),
 "moon_draw": ExtResource("13_7pq6h"),
-"place_wolf_racks": ExtResource("11_70ipk"),
+"place_wolf_building": ExtResource("11_70ipk"),
+"place_wolf_shrine": ExtResource("16_rhfjq"),
 "summon_dog": ExtResource("4_6hutw"),
 "summon_vamp": ExtResource("3_akgt1"),
 "summon_vlord": ExtResource("5_akgt1"),
 "summon_vthrall": ExtResource("7_esjfl"),
 "summon_wolf": ExtResource("2_6hutw"),
+"summon_wolf_monster": ExtResource("17_oe1nx"),
 "summon_wolfman": ExtResource("6_rtaso"),
-"wolf_charge": ExtResource("12_5355i")
+"taste_of_blood": ExtResource("14_0hleb"),
+"wolf_charge": ExtResource("12_5355i"),
+"wolf_claw": ExtResource("15_pgtd7")
 })
 target_marker_scene = ExtResource("8_hm1x2")
+popup_scene = ExtResource("16_1wnaj")

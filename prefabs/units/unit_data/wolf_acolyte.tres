@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="UnitData" load_steps=3 format=3 uid="uid://c1ebbnj0jvge5"]
+
+[ext_resource type="Script" uid="uid://t32n24n8nlk6" path="res://prefabs/units/unit_data/unit_data.gd" id="1_qv70h"]
+[ext_resource type="Texture2D" uid="uid://iy63g73q3hy0" path="res://sprites/units/wolf_units/wolf_acolyte.png" id="2_s36mi"]
+
+[resource]
+script = ExtResource("1_qv70h")
+id = "wolf_acolyte"
+speed = 10.0
+hp = 8.0
+attack_damage = 1.0
+attack_speed = 0.5
+attack_startup_speed = 1.0
+texture = ExtResource("2_s36mi")
+replenish_time = 10.0
+resource_on_death = 2
+resource_on_death_count = 2
+metadata/_custom_type_script = "uid://t32n24n8nlk6"

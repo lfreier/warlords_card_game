@@ -28,17 +28,16 @@ var state: UnitState
 var stop_timer: float = 0
 
 var sprite_timer: float = 0
-var sprite_flash: bool = false
 
 @export var unit_data: UnitData
 @export var sprite: Sprite2D
 @export var spawn_units: Array[UnitSpawnData]
+@export var attack_animator: AnimationPlayer
+var attack_anim_played: bool = false
+
+var dmg_list: Array[float]
 
 func _process(delta: float) -> void:
-	if (sprite_flash):
-		sprite.modulate = Color(Color.RED)
-		sprite_timer = 0.2
-		sprite_flash = false
 	if (sprite_timer > 0):
 		sprite_timer -= delta
 		if (sprite_timer <= 0):
@@ -47,8 +46,23 @@ func _process(delta: float) -> void:
 	if (stop_timer > 0):
 		stop_timer -= delta
 		if (stop_timer <= 0):
-			change_state(move_direction, Unit.UnitState.MOVE)
+			if (attack_target == null):
+				change_state(move_direction, Unit.UnitState.MOVE)
 			stop_timer = 0
+	while (dmg_list.size() > 0):
+		var amnt: float = dmg_list[0]
+		if (amnt < 0 && hp - amnt > unit_data.hp):
+			#no healing past full
+			hp = unit_data.hp
+			dmg_list.remove_at(0)
+			update_labels()
+			continue
+			
+		hp -= amnt
+		dmg_list.remove_at(0)
+		update_labels()
+	if (hp <= 0):
+		kill()
 
 func _physics_process(delta: float) -> void:
 	match state:
@@ -63,15 +77,17 @@ func _physics_process(delta: float) -> void:
 			elif attack_target is AttackableArea:
 				if (attack_timer > -1):
 					attack_timer -= (delta * globals.unit_timescale)
+					if (attack_timer <= .2 && !attack_anim_played):
+						attack_animator.stop(false)
+						attack_animator.play("unit_attack")
+						attack_anim_played = true
 					if (attack_timer <= 0):
 						if attack_target is Unit:
 							attack_unit(attack_target)
 						elif attack_target is Base:
-							attack_target.take_damage(damage)
-							if ((attack_target as Base).reward == globals.ArmyResource.WIN):
-								queue_free()
-							take_damage((attack_target as Base).damage_return)
+							attack_base(attack_target)
 						attack_timer = attack_speed
+						attack_anim_played = false
 				
 			
 func init(init_lane: Lane, direction: bool, starting_state: Unit.UnitState) -> void:
@@ -81,28 +97,37 @@ func init(init_lane: Lane, direction: bool, starting_state: Unit.UnitState) -> v
 	hp = unit_data.hp
 	damage = unit_data.attack_damage
 	attack_speed = unit_data.attack_speed
-	move_speed = unit_data.speed
-	if (direction):
-		self.global_position = Vector2(init_lane.left_x, init_lane.global_position.y)
-	else:
-		self.global_position = Vector2(init_lane.right_x, init_lane.global_position.y)
+	move_speed = unit_data.speed * globals.UNIT_MOVE_MULT
 	change_state(direction, starting_state)
 	update_labels()
 	stop_timer = globals.global_cd_time
 
+func attack_base(target: Base) -> void:
+	var final_damage:float = damage
+	if unit_data.tags.has(Defs.UnitTag.SCOUT):
+		final_damage *= globals.SCOUT_DAM_MULT
+	target.take_damage(final_damage)
+	take_damage((target as Base).damage_return)
+
 func attack_unit(target: Unit) -> void:
-	pre_atk_effects(target)
-	if (target.hp <= damage):
+	var final_damage: float = damage
+	final_damage = pre_atk_effects(target)
+	if (target.hp <= final_damage):
 		change_state(move_direction, Unit.UnitState.MOVE)
 		attack_target = null
-	target.take_damage(damage)
+		on_kill_effects(target)
+	target.take_damage(final_damage)
 	post_atk_effects(target)
 
-func pre_atk_effects(target: Unit) -> void:
-	pass
+func pre_atk_effects(target: Unit) -> float:
+	for child in target.get_children():
+		if child is Aura && (child as Aura).is_marked:
+			return damage * 1.5
+	return damage
 	
 func post_atk_effects(target: Unit) -> void:
-	pass
+	if (unit_data.tags.has(Defs.UnitTag.LIFESTEAL)):
+		dmg_list.append(- (damage / 2))
 
 func change_state(direction: bool, new_state: Unit.UnitState) -> void:
 	move_direction = direction
@@ -124,24 +149,38 @@ func hit_area(area: Area2D) -> void:
 			attack_target = area
 	elif (area is Base):
 		#hitting a base
-		change_state(move_direction, Unit.UnitState.COMBAT)
-		attack_target = area
+		if (area as Base).base_owner != move_direction:
+			change_state(move_direction, Unit.UnitState.COMBAT)
+			attack_target = area
 	else:
 		queue_free()
 
 func kill() -> void:
-	signals.grant_resource.emit(globals.ArmyResource.BLOOD_FILL, 1, !move_direction, "")
+	if (!move_direction):
+		var popup: ResourcePopup = globals.popup_scene.instantiate()
+		popup.global_position = self.global_position
+		get_parent().add_child(popup)
+		popup.init(Defs.ArmyResource.BLOOD_FILL, 1)
+	if (unit_data.resource_on_death != Defs.ArmyResource.NONE && unit_data.resource_on_death_count > 0):
+		if (move_direction):
+			var popup: ResourcePopup = globals.popup_scene.instantiate()
+			popup.global_position = self.global_position
+			get_parent().add_child(popup)
+			popup.init(Defs.ArmyResource.BLOOD_FILL, 1)
+		signals.grant_resource.emit(Defs.ArmyResource.BLOOD, unit_data.resource_on_death_count, move_direction, "")
+	signals.grant_resource.emit(Defs.ArmyResource.BLOOD_FILL, unit_data.reward_blood_pips, !move_direction, "")
 	queue_free()
 
 func take_damage(amount: float) -> void:
-	if (hp - amount <= 0):
-		kill()
-	else:
-		hp -= amount
-		
-	update_labels()
-	sprite_flash = true
+	dmg_list.append(amount)	
+	sprite.modulate = Color(Color.RED)
+	sprite_timer = 0.2
 	
+func on_kill_effects(killed: AttackableArea) -> void:
+	if (unit_data.tags.has(Defs.UnitTag.SPAWN_ON_KILL)):
+		var new_summ: Unit = lane.spawn_unit(spawn_units[0].prefab, move_direction)
+		new_summ.global_position = Vector2(self.global_position.x + move_force, self.global_position.y)
+
 func update_labels() -> void:
 	($hp_text as Label).text = "hp: " + String.num(hp)
 	($move_text as Label).text = "move: " + String.num(move_speed)

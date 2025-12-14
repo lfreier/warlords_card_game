@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="UnitData" load_steps=3 format=3 uid="uid://cksyfxhpla6m6"]
 
 [ext_resource type="Script" uid="uid://t32n24n8nlk6" path="res://prefabs/units/unit_data/unit_data.gd" id="1_y5dbr"]
-[ext_resource type="Texture2D" uid="uid://lcanim4p2pyi" path="res://sprites/units/wolf_dog.png" id="2_awm7q"]
+[ext_resource type="Texture2D" uid="uid://lcanim4p2pyi" path="res://sprites/units/wolf_units/wolf_dog.png" id="2_awm7q"]
 
 [resource]
 script = ExtResource("1_y5dbr")
@@ -9,9 +9,10 @@ id = "dog"
 speed = 14.0
 hp = 3.0
 attack_damage = 0.5
-attack_speed = 0.25
+attack_speed = 0.5
 attack_startup_speed = 0.5
 texture = ExtResource("2_awm7q")
-replenish_time = 5.0
+replenish_time = 6.5
 replenish_stacking = true
+reward_blood_pips = 0
 metadata/_custom_type_script = "uid://t32n24n8nlk6"

@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://civsc7y46ch05"]
+
+[ext_resource type="Script" uid="uid://csb8dgfwunf8e" path="res://prefabs/auras/scripts/lane_speed_aura.gd" id="1_56cqu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_56cqu"]
+size = Vector2(4000, 100)
+
+[node name="LaneSpeedAura" type="Node2D" node_paths=PackedStringArray("aura_area")]
+script = ExtResource("1_56cqu")
+aura_area = NodePath("LaneSpeedArea")
+
+[node name="LaneSpeedArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+
+[node name="LaneSpeedCollider" type="CollisionShape2D" parent="LaneSpeedArea"]
+shape = SubResource("RectangleShape2D_56cqu")

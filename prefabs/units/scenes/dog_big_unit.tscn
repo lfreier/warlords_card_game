@@ -1,0 +1,13 @@
+[gd_scene load_steps=5 format=3 uid="uid://cxaifod56dceb"]
+
+[ext_resource type="PackedScene" uid="uid://c3kn7ul5x3fw4" path="res://prefabs/units/scenes/unit.tscn" id="1_ibmt6"]
+[ext_resource type="Script" uid="uid://xjtdvhvnfuxd" path="res://prefabs/units/scripts/dog_unit.gd" id="2_78l28"]
+[ext_resource type="Resource" uid="uid://3aek7lxx5iyo" path="res://prefabs/units/unit_data/dog_big_data.tres" id="2_sfx4i"]
+[ext_resource type="Texture2D" uid="uid://p25d8kjmavq3" path="res://sprites/units/wolf_units/wolf_dog_big.png" id="4_jvlpv"]
+
+[node name="DogBigUnit" instance=ExtResource("1_ibmt6")]
+script = ExtResource("2_78l28")
+unit_data = ExtResource("2_sfx4i")
+
+[node name="UnitSprite" parent="." index="1"]
+texture = ExtResource("4_jvlpv")

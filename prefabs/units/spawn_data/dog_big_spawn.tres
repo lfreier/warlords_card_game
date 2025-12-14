@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="UnitSpawnData" load_steps=4 format=3 uid="uid://c6v4nwschfic3"]
+
+[ext_resource type="PackedScene" uid="uid://cxaifod56dceb" path="res://prefabs/units/scenes/dog_big_unit.tscn" id="1_7vane"]
+[ext_resource type="Script" uid="uid://km4l8mb2paxu" path="res://prefabs/units/spawn_data/unit_spawn_data.gd" id="1_akyq7"]
+[ext_resource type="Resource" uid="uid://3aek7lxx5iyo" path="res://prefabs/units/unit_data/dog_big_data.tres" id="2_6g1jq"]
+
+[resource]
+script = ExtResource("1_akyq7")
+unit_data = ExtResource("2_6g1jq")
+prefab = ExtResource("1_7vane")
+metadata/_custom_type_script = "uid://km4l8mb2paxu"

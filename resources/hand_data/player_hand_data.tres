@@ -4,6 +4,8 @@
 
 [resource]
 script = ExtResource("1_t1cn2")
+card_gap = 400.0
+hand_origin = Vector2(0, 310)
 starting_hand_size = 5
 max_hand_size = 8
 metadata/_custom_type_script = "uid://by6rf24osa5ik"

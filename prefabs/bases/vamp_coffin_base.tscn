@@ -5,9 +5,10 @@
 
 [node name="VampCoffinBase" instance=ExtResource("1_rat24")]
 hp = 8.0
-damage_return = 1.0
-reward = 2
+damage_return = 2.0
+reward = 3
 reward_amount = 2
+extra = "minor"
 
 [node name="BaseSprite" parent="." index="0"]
 texture = ExtResource("2_sc5nu")

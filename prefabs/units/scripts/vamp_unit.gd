@@ -1,4 +1,4 @@
 extends Unit
 
 func post_atk_effects(target: Unit) -> void:
-	hp += (damage / 2)
+	dmg_list.append(- (damage / 2))

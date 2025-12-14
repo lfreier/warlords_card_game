@@ -4,7 +4,7 @@ extends CardEffect
 
 func execute(source: Actor, target: Node2D) -> bool:
 	if (target is Unit):
-		AuraManager.create_new_aura(target, buff_data)
+		AuraManager.create_new_aura(target, buff_data, true)
 		return true
 	else:
 		return false

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://wjihvqfqgon2"]
+
+[ext_resource type="Script" uid="uid://drpacpyhhfuku" path="res://prefabs/auras/scripts/curse_aura.gd" id="1_uco4m"]
+
+[node name="CurseAura" type="Node2D"]
+script = ExtResource("1_uco4m")

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cn8cc3bpepvfa"]
+
+[ext_resource type="Script" uid="uid://doyahvnuu5tth" path="res://prefabs/auras/scripts/mark_aura.gd" id="1_ytsj0"]
+[ext_resource type="Texture2D" uid="uid://5evn33tfv0qe" path="res://sprites/auras/marked_aura.png" id="2_6ewir"]
+
+[node name="MarkAura" type="Node2D"]
+script = ExtResource("1_ytsj0")
+
+[node name="MarkSprite" type="Sprite2D" parent="."]
+z_index = 100
+texture = ExtResource("2_6ewir")

@@ -1,5 +1,7 @@
 extends Camera2D
 
+var paused: bool = false
+
 func _input(event: InputEvent) -> void:
 	if (event is InputEventMouseButton):
 		if (event.button_index == MOUSE_BUTTON_LEFT):
@@ -21,3 +23,9 @@ func _input(event: InputEvent) -> void:
 				clicked_card.curr_hand.handle_click(clicked_card, event)
 		if (event.button_index == MOUSE_BUTTON_RIGHT):
 			signals.player_lock_click.emit(false, "")
+	if (event.is_action_pressed("pause")):
+		if paused:
+			Engine.time_scale = 1
+		else:
+			Engine.time_scale = 0
+		paused = !paused

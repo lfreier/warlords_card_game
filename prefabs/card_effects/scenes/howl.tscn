@@ -7,6 +7,8 @@
 [node name="howl" type="Node"]
 script = ExtResource("1_o7r3s")
 howl_data = ExtResource("2_jl84a")
+draw_count = 1
 id = "howl"
 sprite = ExtResource("2_hgr1e")
-card_text = "Increase attack speed of all units by 20%"
+card_text = "Increase attack speed of all units by 20%. Draw a card"
+card_name = "Howl"

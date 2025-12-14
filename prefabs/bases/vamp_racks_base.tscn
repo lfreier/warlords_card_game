@@ -7,10 +7,9 @@
 [node name="VampRacksBase" instance=ExtResource("1_8yvgv")]
 resource = 5
 resource_amount = 1
-resource_gen_time = 7.0
+resource_gen_time = 15.0
 resource_unit = ExtResource("2_mdnxf")
 hp = 13.0
-damage_return = 1.0
 reward = 1
 reward_amount = 2
 

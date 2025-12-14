@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bjrrudknm3i5d"]
 
 [ext_resource type="Script" uid="uid://cfv226pk6e7og" path="res://scripts/actor.gd" id="1_c3idl"]
-[ext_resource type="Resource" uid="uid://b3uqgoe7wclys" path="res://resources/army_data/wolf_army_data.tres" id="2_dqkch"]
+[ext_resource type="Resource" uid="uid://b3uqgoe7wclys" path="res://resources/army_data/wolf_horde_army_data.tres" id="2_dqkch"]
 [ext_resource type="PackedScene" uid="uid://c6anytgwa283m" path="res://scenes/hand.tscn" id="2_qhqgy"]
 [ext_resource type="Resource" uid="uid://ctmag37p5cn1g" path="res://resources/hand_data/player_hand_data.tres" id="3_qhqgy"]
 
@@ -18,9 +18,9 @@ is_player = true
 
 [node name="DeckCount" type="Label" parent="."]
 offset_left = 1650.0
-offset_top = 600.0
+offset_top = 670.0
 offset_right = 1810.0
-offset_bottom = 715.0
+offset_bottom = 785.0
 text = "0"
 label_settings = SubResource("LabelSettings_g2els")
 horizontal_alignment = 1

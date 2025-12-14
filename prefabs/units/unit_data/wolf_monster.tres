@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="UnitData" load_steps=3 format=3 uid="uid://ich3wg7kn4cw"]
+
+[ext_resource type="Script" uid="uid://t32n24n8nlk6" path="res://prefabs/units/unit_data/unit_data.gd" id="1_mcgkf"]
+[ext_resource type="Texture2D" uid="uid://cqwybitvcusxr" path="res://sprites/units/wolf_units/wolf_monster.png" id="2_54dqe"]
+
+[resource]
+script = ExtResource("1_mcgkf")
+id = "wolf_monster"
+speed = 6.0
+hp = 36.0
+attack_damage = 8.0
+attack_speed = 0.75
+attack_startup_speed = 1.0
+texture = ExtResource("2_54dqe")
+tags = Array[int]([2])
+reward_blood_pips = 2
+metadata/_custom_type_script = "uid://t32n24n8nlk6"

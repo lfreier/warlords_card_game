@@ -47,8 +47,9 @@ func execute_mark_click(target):
 		spawner.click_locked = false
 		signals.player_lock_click.emit(false, "")
 	elif (target_parent is BasePlacementButton && target is Lane):
-		BasePlacement.place_base((target_parent as BasePlacementButton).base_obj, target, true)
-		signals.player_lock_click.emit(false, "")
+		if ((target as Lane).can_spawn_base((target as Lane).base_list)):
+			signals.place_base.emit((target_parent as BasePlacementButton).base_obj, target, true)
+			signals.player_lock_click.emit(false, "")
 	elif (target_parent is Card && target is Base):
 		#base upgrading
 		pass

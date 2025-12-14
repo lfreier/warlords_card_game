@@ -8,6 +8,7 @@ var actor: Actor
 var click_locked: bool
 var deck: Deck
 var held_cards: Array[Card]
+var discard: Array[String]
 var starting_hand: int
 var hand_size: int
 var card_clicked: bool
@@ -46,8 +47,14 @@ func draw(count: int) -> void:
 			continue
 		var new_card_scene: PackedScene = deck.get_next_card()
 		if (new_card_scene == null):
-			print("end of deck")
-			continue
+			if discard.size() == 0:
+				print("end of deck, and no discards available")
+				continue
+			print("end of deck, shuffling discard")
+			for card_id: String in discard:
+				deck.add_card(card_id, true)
+			new_card_scene = deck.get_next_card()
+			discard.clear()
 		var new_card: Card 
 		var new_effect: CardEffect = new_card_scene.instantiate(PackedScene.GEN_EDIT_STATE_MAIN)
 		if (new_effect is CardEffect):
@@ -56,7 +63,7 @@ func draw(count: int) -> void:
 			card_holder.add_child(new_card)
 			if (deck != null):
 				held_cards.append(new_card)
-				new_card.init(self)
+				new_card.init(self, new_effect.id)
 				sort_hand()
 	pass
 	
@@ -95,7 +102,7 @@ func sort_hand() -> void:
 		new_position.y = 0
 		curr_card.position = new_position
 		curr_card.origin_pos = new_position
-		curr_card.z_index = i + globals.VisualLayers.CARD
+		curr_card.z_index = i + Defs.VisualLayers.CARD
 
 func play_card() -> void:
 	var card: Card = null
@@ -110,6 +117,7 @@ func play_card() -> void:
 		if (held_cards[i] == card):
 			if (card.play_card()):
 				held_cards.remove_at(i)
+				discard.append(card.id)
 				card.queue_free()
 			sort_hand()
 			for j in range(held_cards.size()):

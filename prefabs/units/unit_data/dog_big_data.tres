@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="UnitData" load_steps=3 format=3 uid="uid://3aek7lxx5iyo"]
+
+[ext_resource type="Script" uid="uid://t32n24n8nlk6" path="res://prefabs/units/unit_data/unit_data.gd" id="1_3lvmq"]
+[ext_resource type="Texture2D" uid="uid://p25d8kjmavq3" path="res://sprites/units/wolf_units/wolf_dog_big.png" id="2_vd5si"]
+
+[resource]
+script = ExtResource("1_3lvmq")
+id = "dog_big"
+speed = 18.0
+hp = 6.0
+attack_damage = 1.0
+attack_speed = 0.25
+attack_startup_speed = 0.5
+texture = ExtResource("2_vd5si")
+replenish_time = 9.0
+tags = [0]
+metadata/_custom_type_script = "uid://t32n24n8nlk6"

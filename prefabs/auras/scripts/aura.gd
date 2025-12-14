@@ -14,13 +14,17 @@ enum StatChange
 {
 	MOVE_SPEED = 0,
 	ATK_SPEED = 1,
-	DAMAGE = 2
+	DAMAGE = 2,
+	MARK = 3
 }
 
 var ticks_remaining: int
 var target
+var is_player: bool
 
 var aura_data: AuraData
+
+var is_marked: bool = false
 
 @abstract
 func apply_effect() -> void

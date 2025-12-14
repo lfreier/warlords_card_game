@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bxtm2oxnb13gh"]
+
+[ext_resource type="Script" uid="uid://bi8kxey8f0ajq" path="res://prefabs/card_effects/scripts/wolf_claw.gd" id="1_1n5ec"]
+[ext_resource type="Texture2D" uid="uid://br6oy16k88i6b" path="res://sprites/cards/wolf_claw.png" id="2_lmdnh"]
+
+[node name="wolf_claw" type="Node"]
+script = ExtResource("1_1n5ec")
+dmg_mult = 3
+id = "wolf_claw"
+resource_cost = -1
+resource_type = 2
+sprite = ExtResource("2_lmdnh")
+target_type = 3
+card_text = "Deal 3X damage to enemy targets in an area"
+card_name = "Shadow Claw"
+effect_radius = 160.0

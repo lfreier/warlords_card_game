@@ -5,9 +5,10 @@
 
 [node name="WolfShackBase" instance=ExtResource("1_bqb6b")]
 hp = 6.0
-damage_return = 1.0
+damage_return = 2.0
 reward = 2
-reward_amount = 2
+reward_amount = 1
+extra = "minor"
 
 [node name="BaseSprite" parent="." index="0"]
 texture = ExtResource("2_akpkj")
