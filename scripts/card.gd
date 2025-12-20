@@ -71,6 +71,8 @@ func _physics_process(_delta: float) -> void:
 					temp = temp.get_parent()
 				if (temp is Lane):
 					curr_target = temp
+		elif (card_effect.target_type == CardEffect.CardTarget.AREA):
+			curr_hand.card_to_play = self
 		else:
 			curr_hand.card_to_play = null
 			curr_target = null

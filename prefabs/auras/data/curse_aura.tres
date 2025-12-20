@@ -8,5 +8,5 @@ script = ExtResource("1_t4fah")
 prefab = ExtResource("1_5njb7")
 length_in_seconds = 10.0
 length_in_ticks = 40
-effect_strength = 1.0
+effect_strength = 1.5
 metadata/_custom_type_script = "uid://b0ge3x30pm1pw"

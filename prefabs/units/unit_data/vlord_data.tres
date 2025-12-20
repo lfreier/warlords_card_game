@@ -7,8 +7,8 @@
 script = ExtResource("1_fhbrq")
 id = "vlord"
 speed = 5.0
-hp = 24.0
-attack_damage = 6.0
+hp = 40.0
+attack_damage = 7.0
 attack_speed = 1.0
 attack_startup_speed = 1.0
 texture = ExtResource("2_1j81h")

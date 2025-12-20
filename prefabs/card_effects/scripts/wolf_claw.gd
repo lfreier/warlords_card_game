@@ -13,7 +13,7 @@ func execute(source: Actor, target: Node2D) -> bool:
 	
 	for i in range(0, hits.size()):
 		var curr_target = hits[i].get("collider")
-		if (curr_target is Base && (curr_target as Base).base_owner == false):
+		if (curr_target is Base && (curr_target as Base).base_owner == false && (curr_target as Base).resource != Defs.ArmyResource.WIN):
 			(curr_target as Base).take_damage(damage)
 			continue
 		if (curr_target is Unit && (curr_target as Unit).move_direction == false):

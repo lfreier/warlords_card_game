@@ -96,7 +96,8 @@ func destroy_base() -> void:
 			popup.global_position = self.global_position
 			popup.init(reward, reward_amount)
 		signals.grant_resource.emit(reward, reward_amount, !base_owner, "")
-	home_lane.check_clear_null_bases()
+	if (home_lane != null):
+		home_lane.check_clear_null_bases()
 	queue_free()
 
 func take_damage(amount: float) -> void:
