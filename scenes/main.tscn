@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://dbt30in5gmt27"]
+[gd_scene load_steps=33 format=3 uid="uid://dbt30in5gmt27"]
 
 [ext_resource type="Script" uid="uid://crcu2xhn4nd65" path="res://scripts/card_scene_manager.gd" id="1_m7dmi"]
 [ext_resource type="Script" uid="uid://b5ru75k7g4ctj" path="res://scripts/input_reader.gd" id="1_s1p2v"]
@@ -27,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://bh7v5e8xjq6ny" path="res://prefabs/units/scenes/bat_unit.tscn" id="19_og1vs"]
 [ext_resource type="PackedScene" uid="uid://bqp65rx2wd3ue" path="res://prefabs/bases/home_base_enemy.tscn" id="19_pm3ni"]
 [ext_resource type="Texture2D" uid="uid://b4fgtu3nyb53q" path="res://sprites/sun_icon.png" id="20_yc10j"]
+[ext_resource type="Texture2D" uid="uid://t3dq4doxml72" path="res://sprites/night_filter.png" id="28_2f3dj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_og1vs"]
 
@@ -40,7 +41,7 @@ line_spacing = -10.0
 font = SubResource("SystemFont_vxglm")
 font_size = 52
 
-[node name="Main" type="Node2D" node_paths=PackedStringArray("lane_holder", "day_progress_bar")]
+[node name="Main" type="Node2D" node_paths=PackedStringArray("lane_holder", "day_progress_bar", "night_filter")]
 script = ExtResource("1_m7dmi")
 lane_count = 6
 lane_holder = NodePath("LaneContainer/LaneHolder")
@@ -57,6 +58,7 @@ deck_selection_scene = ExtResource("7_2wyq8")
 diff_selection_scene = ExtResource("8_vxglm")
 enemy_bases = Array[PackedScene]([ExtResource("8_0ld40"), ExtResource("13_trceg"), ExtResource("7_jbj1t")])
 player_shack_prefab = ExtResource("9_gqmmt")
+night_filter = NodePath("NightFilter")
 
 [node name="InputReader" type="Camera2D" parent="."]
 zoom = Vector2(0.5, 0.5)
@@ -69,6 +71,7 @@ unit_button_scene = ExtResource("13_jscy8")
 
 [node name="DrawButton" type="Button" parent="."]
 visible = false
+z_index = 10
 offset_left = 1650.0
 offset_top = 600.0
 offset_right = 1810.0
@@ -109,6 +112,7 @@ position = Vector2(1760, 0)
 damage_return = 5.0
 
 [node name="EnemyBloodCounter" type="ProgressBar" parent="LaneContainer/LaneHolder"]
+z_index = 5
 layout_mode = 0
 offset_left = 1860.0
 offset_top = -400.0
@@ -120,6 +124,7 @@ fill_mode = 3
 show_percentage = false
 
 [node name="EnemyBloodText" type="Label" parent="LaneContainer/LaneHolder/EnemyBloodCounter"]
+z_index = 5
 layout_mode = 0
 offset_left = 5.0
 offset_top = 7.0
@@ -135,6 +140,7 @@ autowrap_mode = 1
 [node name="TimerService" type="Node" parent="."]
 
 [node name="HudCounter" parent="." instance=ExtResource("11_ya4ey")]
+z_index = 10
 offset_left = -1800.0
 offset_top = 550.0
 offset_right = -1800.0
@@ -143,6 +149,7 @@ text_color = Color(0.4425015, 7.5805934e-07, 1.4439226e-07, 1)
 resource_type = 2
 
 [node name="HudCounter2" parent="." instance=ExtResource("11_ya4ey")]
+z_index = 10
 offset_left = -1800.0
 offset_top = 750.0
 offset_right = -1800.0
@@ -151,6 +158,7 @@ text_color = Color(0.3706263, 0.2443381, 0.07334799, 1)
 resource_type = 4
 
 [node name="HudFillCounter" parent="." instance=ExtResource("16_dp3eg")]
+z_index = 10
 offset_left = -1800.0
 offset_top = 550.0
 offset_right = -1800.0
@@ -159,6 +167,7 @@ resource_type = 3
 fill_max = 5
 
 [node name="DayTimer" type="TextureProgressBar" parent="."]
+z_index = 10
 offset_left = -87.5
 offset_top = -1050.0
 offset_right = 12.5
@@ -168,3 +177,9 @@ fill_mode = 4
 texture_under = ExtResource("14_jkv2x")
 texture_over = ExtResource("20_yc10j")
 texture_progress = ExtResource("15_jbj1t")
+
+[node name="NightFilter" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(3, 3)
+scale = Vector2(2, 2)
+texture = ExtResource("28_2f3dj")

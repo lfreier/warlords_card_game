@@ -26,6 +26,8 @@ var aura_manager: AuraManager
 
 @export var player_shack_prefab: PackedScene
 
+@export var night_filter: Sprite2D
+
 var done: bool
 
 func _init() -> void:
@@ -55,9 +57,9 @@ func setup_scene() -> void:
 	AuraManager.start_manager()
 	day_timer = day_length
 	curr_period_length = day_length
-	globals.time_of_day = Defs.TimeOfDay.DAY
 	day_progress = 0
 	day_progress_bar.texture_over = time_of_day_icons[Defs.TimeOfDay.DAY]
+	change_time_of_day()
 	
 func _process(delta: float) -> void:
 	var delta_curr = delta * globals.env_timescale
@@ -77,10 +79,12 @@ func change_time_of_day() -> float:
 	if (globals.time_of_day == Defs.TimeOfDay.DAY):
 		globals.time_of_day = Defs.TimeOfDay.NIGHT
 		day_progress_bar.texture_over = time_of_day_icons[Defs.TimeOfDay.NIGHT]
+		night_filter.show()
 		return night_length
 	else:
 		globals.time_of_day = Defs.TimeOfDay.DAY
 		day_progress_bar.texture_over = time_of_day_icons[Defs.TimeOfDay.DAY]
+		night_filter.hide()
 		return day_length
 
 func init_lanes() -> void:

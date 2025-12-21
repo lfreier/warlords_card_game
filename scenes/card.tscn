@@ -44,9 +44,11 @@ card_name_text = NodePath("cardName")
 card_radius = NodePath("cardTarget/cardRadius")
 
 [node name="cardBack" type="Sprite2D" parent="."]
+z_index = 5
 texture = ExtResource("2_mmdvn")
 
 [node name="cardSprite" type="Sprite2D" parent="."]
+z_index = 5
 position = Vector2(-1, -81)
 texture = ExtResource("3_sy11y")
 
@@ -55,14 +57,17 @@ shape = SubResource("RectangleShape2D_qbmb7")
 
 [node name="cardTarget" type="Sprite2D" parent="."]
 visible = false
+z_index = 5
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("3_ktuci")
 
 [node name="cardRadius" type="Sprite2D" parent="cardTarget"]
+z_index = 5
 scale = Vector2(0.6666667, 0.6666667)
 texture = ExtResource("5_6ligt")
 
 [node name="cardText" type="Label" parent="."]
+z_index = 6
 offset_left = -160.0
 offset_top = 82.5
 offset_right = 160.0
@@ -74,10 +79,12 @@ vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="cardCostBack" type="Sprite2D" parent="."]
+z_index = 5
 position = Vector2(164, -254)
 texture = ExtResource("4_kg30u")
 
 [node name="cardCost" type="Label" parent="cardCostBack"]
+z_index = 6
 offset_left = -18.0
 offset_top = -45.0
 offset_right = 22.0
@@ -86,6 +93,7 @@ text = "0"
 label_settings = SubResource("LabelSettings_kg30u")
 
 [node name="cardName" type="Label" parent="."]
+z_index = 6
 offset_left = -165.0
 offset_top = -274.0
 offset_right = 165.0

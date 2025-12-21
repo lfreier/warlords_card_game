@@ -17,6 +17,7 @@ deck_count = NodePath("DeckCount")
 is_player = true
 
 [node name="DeckCount" type="Label" parent="."]
+z_index = 5
 offset_left = 1650.0
 offset_top = 670.0
 offset_right = 1810.0
